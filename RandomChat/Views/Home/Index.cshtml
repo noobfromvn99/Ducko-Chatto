@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Setting";
+}
+
+    <div class="card">
+        <h1>Set up a bit of your information</h1>
+        
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="GenderDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Your Gender
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" onclick="changeGender('Male')">Male</a>
+                <a class="dropdown-item" onclick="changeGender('FeMale')">Female</a>
+                <a class="dropdown-item" onclick="changeGender('Blur')">Blur</a>
+            </div>
+            <input type="hidden" id="Gender" name="Gender" />
+        </div>
+
+    </div>
+<script>
+    function changeGender(Gender)
+    {
+        document.getElementById("Gender").value = Gender;
+        document.getElementById("GenderDropDown").innerHTML = Gender;
+    }
+</script>
