@@ -20,7 +20,7 @@ namespace RandomChat.Data
             base.OnModelCreating(builder);
 
             builder.Entity<Message>().
-                HasOne(e => e.AppUser).WithMany(e => e.Messages);
+                HasOne(e => e.AppUser).WithMany(e => e.Messages).HasForeignKey(e => e.UsrID);
         }
     }
 }
