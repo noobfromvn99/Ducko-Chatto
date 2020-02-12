@@ -19,7 +19,8 @@ namespace RandomChat.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<AppUser>().HasCheckConstraint("CH_Appuser_UserID", "len(UserID) = 8");
+            builder.Entity<Message>().
+                HasOne(e => e.AppUser).WithMany(e => e.Messages);
         }
     }
 }
