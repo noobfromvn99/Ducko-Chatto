@@ -22,6 +22,7 @@ namespace RandomChat.Models
     public class AppUser
     {
         [Required]
+        [Key]
         public int UsrID {get;set;}
         [Required]
         public Gender Gender { get; set; }
@@ -29,5 +30,6 @@ namespace RandomChat.Models
         public ageStage AgeStage { get; set; }
 
         public virtual List<Message> Messages { get; set; }
+        public virtual Login Login { get; set; }
     }
 }
