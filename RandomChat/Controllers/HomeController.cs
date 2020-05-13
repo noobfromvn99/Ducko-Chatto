@@ -12,14 +12,34 @@ namespace RandomChat.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ChatContext _context;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+             _context = context;
         }
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public Task<IActionResult> Login(string UsrID, string Password, Gender Gender, ageStage AgeStage)
+        {
+            var login = await _context.Logins.FindAsync(loginID);
+            //Validation
+            if (login == null || !PBKDF2.Verify(login.PasswordHash, password))
+            {
+                ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
+                return View(new Login { LoginID = loginID });
+            }
+
+            // Login customer.
+            HttpContext.Session.SetInt32(nameof(Customer.CustomerID), login.UsrID);
+            HttpContext.Session.SetString(Gender, Gender);
+            HttpContext.Session.SetString(ageStage, AgeStage);
             return View();
         }
 

@@ -28,6 +28,8 @@ namespace RandomChat.Models
         public Gender Gender { get; set; }
         [Required]
         public ageStage AgeStage { get; set; }
+        [Required]
+        public string Email {get;set;}
 
         public virtual List<Message> Messages { get; set; }
         public virtual Login Login { get; set; }
