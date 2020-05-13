@@ -3,56 +3,73 @@
     ViewData["Title"] = "Setting";
 }
 
+
     <div class="card">
         <h1>Set up a bit of your information</h1>
-        <label asp-for="UsrID" class="control-label"></label>
-        <input asp-for="UsrID" class="form-control" />
-        <label asp-for="Password" class="control-label"></label>
-        <input asp-for="Password" class="form-control" />
+        <form asp-action="Login" style="margin-left:25px;">
+            <label asp-for="UsrID" class="control-label">User ID</label>
+            <input asp-for="UsrID" class="form-control" />
+            <label for="Password" class="control-label">Password</label>
+            <input for="Password" class="form-control" />
 
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="GenderDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Your Gender
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="changeGender('Male')">Male</a>
-                <a class="dropdown-item" onclick="changeGender('FeMale')">Female</a>
-                <a class="dropdown-item" onclick="changeGender('Blur')">Blur</a>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="GenderDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select Your Gender
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" onclick="changeGender('Male')">Male</a>
+                    <a class="dropdown-item" onclick="changeGender('FeMale')">Female</a>
+                    <a class="dropdown-item" onclick="changeGender('Blur')">Blur</a>
+                </div>
+                <input type="hidden" id="Gender" name="Gender" />
             </div>
-            <input type="hidden" id="Gender" name="Gender" />
-        </div>
 
-         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="GenderDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Your Age
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="changeGender('low')" value="low">Under 18</a>
-                <a class="dropdown-item" onclick="changeGender('Mediumn')" value="Mediumn">18 - 23</a>
-                <a class="dropdown-item" onclick="changeGender('High')" value="High">23 Above</a>
-                <input type="hidden" id="AgeStage" name="AgeStage" />
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="GenderDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select Your Age
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" onclick="changeAge('low')" value="low">Under 18</a>
+                    <a class="dropdown-item" onclick="changeAge('Mediumn')" value="Mediumn">18 - 23</a>
+                    <a class="dropdown-item" onclick="changeAge('High')" value="High">23 Above</a>
+                    <input type="hidden" id="AgeStage" name="AgeStage" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
+
+            <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-primary" />
-        </div>
-        @Html.ValidationMessage("LoginFailed", new { @class = "text-danger" })
+            </div>
+            @Html.ValidationMessage("LoginFailed", new { @class = "text-danger" })
+        </form>
     </div>
 <script>
-    function changeGender(Gender)
-    {
+    function changeGender(Gender) {
         document.getElementById("Gender").value = Gender;
         document.getElementById("GenderDropDown").innerHTML = Gender;
     }
 
-    function changeAge(age)
-    {
+
+    function changeAge(age) {
         document.getElementById("AgeStage").value = age;
+        document.getElementById("GenderDropDown").innerHTML = age;
     }
-    
+
+
 </script>
+
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
+
+
+
+
+
+
+
+
+

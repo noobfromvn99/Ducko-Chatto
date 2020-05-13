@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RandomChat.Data;
 using RandomChat.Models;
+using SimpleHashing;
 
 namespace RandomChat.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
         private readonly ChatContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ChatContext context)
         {
-            _logger = logger;
+         
              _context = context;
         }
 
@@ -26,20 +29,20 @@ namespace RandomChat.Controllers
         }
 
         [HttpPost]
-        public Task<IActionResult> Index(string UsrID, string Password, Gender Gender, ageStage AgeStage)
+        public async Task<IActionResult> Index(string UsrID, string Password, string Gender, string AgeStage)
         {
-            var login = await _context.Logins.FindAsync(loginID);
+            var login = await _context.Logins.FindAsync(UsrID);
             //Validation
-            if (login == null || !PBKDF2.Verify(login.PasswordHash, password))
+            if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
-                return View(new Login { LoginID = loginID });
+                return View();
             }
 
             // Login customer.
-            HttpContext.Session.SetInt32(nameof(Customer.CustomerID), login.UsrID);
-            HttpContext.Session.SetString(Gender, Gender);
-            HttpContext.Session.SetString(ageStage, AgeStage);
+            HttpContext.Session.SetInt32(nameof(Login.UsrID), login.UsrID);
+            HttpContext.Session.SetString("Gender", Gender.ToString());
+            HttpContext.Session.SetString("ageStage", AgeStage.ToString());
             return View();
         }
 

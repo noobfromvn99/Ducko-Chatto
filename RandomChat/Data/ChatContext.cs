@@ -13,7 +13,7 @@ namespace RandomChat.Data
         { }
 
         public DbSet<AppUser> Appusers { get; set; }
-        public DbSet<Message> Messages{ get; set; }
+       
         public DbSet<Login> Logins { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder) //validation
@@ -21,9 +21,6 @@ namespace RandomChat.Data
             base.OnModelCreating(builder);
             builder.Entity<Login>().HasCheckConstraint("CH_Login_LoginID", "len(LoginID) = 8").
                 HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
-
-            builder.Entity<Message>().
-                HasOne(e => e.AppUser).WithMany(e => e.Messages).HasForeignKey(e => e.UsrID);
 
             builder.Entity<Login>().
                 HasOne(e => e.AppUser).WithOne(e => e.Login);
