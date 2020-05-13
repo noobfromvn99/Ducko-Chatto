@@ -17,6 +17,20 @@
             <input type="hidden" id="Gender" name="Gender" />
         </div>
 
+         <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="GenderDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Your Age
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" onclick="changeGender('Male')" value="low">Under 18</a>
+                <a class="dropdown-item" onclick="changeGender('FeMale')" value="Mediumn">18 - 23</a>
+                <a class="dropdown-item" onclick="changeGender('Blur')" value="High">23 Above</a>
+            </div>
+        </div>
+
+        
+
+
     </div>
 <script>
     function changeGender(Gender)
