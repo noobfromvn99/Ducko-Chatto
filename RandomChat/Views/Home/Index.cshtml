@@ -6,11 +6,11 @@
 
     <div class="card">
         <h1>Set up a bit of your information</h1>
-        <form asp-action="Login" style="margin-left:25px;">
-            <label asp-for="UsrID" class="control-label">User ID</label>
-            <input asp-for="UsrID" class="form-control" />
+        <form asp-action="Index" style="margin-left:25px;">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" class="form-control" />
             <label for="Password" class="control-label">Password</label>
-            <input for="Password" class="form-control" />
+            <input  id="Password" name="Password" type="password" class="form-control" />
 
 
             <div class="dropdown">
@@ -27,7 +27,7 @@
 
 
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="GenderDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="AgeDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Select Your Age
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -54,7 +54,7 @@
 
     function changeAge(age) {
         document.getElementById("AgeStage").value = age;
-        document.getElementById("GenderDropDown").innerHTML = age;
+        document.getElementById("AgeDropDown").innerHTML = age;
     }
 
 

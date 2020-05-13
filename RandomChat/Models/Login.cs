@@ -9,9 +9,9 @@ namespace RandomChat.Models
 {
     public class Login
     {
-        [Required, StringLength(8)]
-        [Display(Name = "Login ID")]
-        public string LoginID { get; set; }
+        [Required, StringLength(50)]
+        [Key]
+        public string Email { get; set; }
 
         [Required]
         [ForeignKey("AppUser")]

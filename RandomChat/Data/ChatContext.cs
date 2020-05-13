@@ -19,8 +19,7 @@ namespace RandomChat.Data
         protected override void OnModelCreating(ModelBuilder builder) //validation
         {
             base.OnModelCreating(builder);
-            builder.Entity<Login>().HasCheckConstraint("CH_Login_LoginID", "len(LoginID) = 8").
-                HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
+            builder.Entity<Login>().HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
 
             builder.Entity<Login>().
                 HasOne(e => e.AppUser).WithOne(e => e.Login);
