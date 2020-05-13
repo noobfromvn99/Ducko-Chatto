@@ -22,9 +22,10 @@
                 Select Your Age
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="changeGender('Male')" value="low">Under 18</a>
-                <a class="dropdown-item" onclick="changeGender('FeMale')" value="Mediumn">18 - 23</a>
-                <a class="dropdown-item" onclick="changeGender('Blur')" value="High">23 Above</a>
+                <a class="dropdown-item" onclick="changeGender('low')" value="low">Under 18</a>
+                <a class="dropdown-item" onclick="changeGender('Mediumn')" value="Mediumn">18 - 23</a>
+                <a class="dropdown-item" onclick="changeGender('High')" value="High">23 Above</a>
+                <input type="hidden" id="AgeStage" name="AgeStage" />
             </div>
         </div>
 
@@ -37,5 +38,10 @@
     {
         document.getElementById("Gender").value = Gender;
         document.getElementById("GenderDropDown").innerHTML = Gender;
+    }
+
+    function changeAge(age)
+    {
+        document.getElementById("AgeStage").value = age;
     }
 </script>
