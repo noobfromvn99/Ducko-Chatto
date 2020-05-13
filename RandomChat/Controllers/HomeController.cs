@@ -26,7 +26,7 @@ namespace RandomChat.Controllers
         }
 
         [HttpPost]
-        public Task<IActionResult> Login(string UsrID, string Password, Gender Gender, ageStage AgeStage)
+        public Task<IActionResult> Index(string UsrID, string Password, Gender Gender, ageStage AgeStage)
         {
             var login = await _context.Logins.FindAsync(loginID);
             //Validation
