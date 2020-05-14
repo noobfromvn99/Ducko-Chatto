@@ -42,12 +42,12 @@ namespace RandomChat.Migrations
                         .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("UsrID")
                         .HasColumnType("int");
 
                     b.HasKey("Email");
 
-                    b.HasIndex("UserID")
+                    b.HasIndex("UsrID")
                         .IsUnique();
 
                     b.ToTable("Logins");
@@ -55,11 +55,26 @@ namespace RandomChat.Migrations
                     b.HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
                 });
 
+            modelBuilder.Entity("RandomChat.Models.Verification", b =>
+                {
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
+
+                    b.HasKey("Email");
+
+                    b.ToTable("Verifications");
+                });
+
             modelBuilder.Entity("RandomChat.Models.Login", b =>
                 {
                     b.HasOne("RandomChat.Models.AppUser", "AppUser")
                         .WithOne("Login")
-                        .HasForeignKey("RandomChat.Models.Login", "UserID")
+                        .HasForeignKey("RandomChat.Models.Login", "UsrID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

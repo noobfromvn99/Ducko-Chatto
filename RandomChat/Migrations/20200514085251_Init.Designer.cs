@@ -9,7 +9,7 @@ using RandomChat.Data;
 namespace RandomChat.Migrations
 {
     [DbContext(typeof(ChatContext))]
-    [Migration("20200513164221_Init")]
+    [Migration("20200514085251_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,8 +36,8 @@ namespace RandomChat.Migrations
             modelBuilder.Entity("RandomChat.Models.Login", b =>
                 {
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(8)")
-                        .HasMaxLength(8);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
@@ -55,6 +55,21 @@ namespace RandomChat.Migrations
                     b.ToTable("Logins");
 
                     b.HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
+                });
+
+            modelBuilder.Entity("RandomChat.Models.Verification", b =>
+                {
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
+
+                    b.HasKey("Email");
+
+                    b.ToTable("Verifications");
                 });
 
             modelBuilder.Entity("RandomChat.Models.Login", b =>

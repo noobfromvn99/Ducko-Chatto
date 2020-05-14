@@ -20,5 +20,8 @@ namespace RandomChat.Models
 
         [Required, StringLength(64)]
         public string PasswordHash { get; set; }
+
+      
+      
     }
 }

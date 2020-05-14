@@ -53,11 +53,19 @@ namespace RandomChat.Controllers
             return RedirectToAction("Index", "Chat");
         }
 
-        public IActionResult Privacy()
+        public IActionResult Create()
         {
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(String email, String password)
+        {
+            Login login = new Login { Email = email, PasswordHash = PBKDF2.Hash(password) };
+            _context.Logins.Add(login);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

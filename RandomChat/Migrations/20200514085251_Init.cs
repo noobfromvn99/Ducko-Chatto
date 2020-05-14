@@ -19,10 +19,22 @@ namespace RandomChat.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Verifications",
+                columns: table => new
+                {
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
+                    Code = table.Column<string>(maxLength: 6, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Verifications", x => x.Email);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Logins",
                 columns: table => new
                 {
-                    Email = table.Column<string>(maxLength: 8, nullable: false),
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
                     UsrID = table.Column<int>(nullable: false),
                     PasswordHash = table.Column<string>(maxLength: 64, nullable: false)
                 },
@@ -49,6 +61,9 @@ namespace RandomChat.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Logins");
+
+            migrationBuilder.DropTable(
+                name: "Verifications");
 
             migrationBuilder.DropTable(
                 name: "Appusers");

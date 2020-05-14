@@ -10,7 +10,7 @@
             <label asp-for="Email" class="control-label">Email</label>
             <input asp-for="Email" class="form-control" />
             <label for="Password" class="control-label">Password</label>
-            <input  id="Password" name="Password" type="password" class="form-control" />
+            <input id="Password" name="Password" type="password" class="form-control" />
 
 
             <div class="dropdown">
@@ -43,6 +43,9 @@
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
             @Html.ValidationMessage("LoginFailed", new { @class = "text-danger" })
+            <div class="form-group">
+                <input type="button" value="Register" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("Create", "Home") + "'");" />
+            </div>
         </form>
     </div>
 <script>
