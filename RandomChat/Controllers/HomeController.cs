@@ -25,7 +25,7 @@ namespace RandomChat.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32(nameof(Login.UsrID)) != null)
+            if (HttpContext.Session.GetInt32(nameof(AppUser.UserID)) != null)
             {
                 return RedirectToAction("Index", "Chat");
             }
@@ -39,6 +39,7 @@ namespace RandomChat.Controllers
         public async Task<IActionResult> Index(string Email, string Password, string Gender, string AgeStage)
         {
             var login = await _context.Logins.FindAsync(Email);
+            var user = await _context.Appusers.FindAsync(Email);
             //Validation
             if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
             {
@@ -47,7 +48,7 @@ namespace RandomChat.Controllers
             }
 
             // Login customer.
-            HttpContext.Session.SetInt32(nameof(Login.UsrID), login.UsrID);
+            HttpContext.Session.SetInt32(nameof(AppUser.UserID), user.UserID);
             HttpContext.Session.SetString("Gender", Gender.ToString());
             HttpContext.Session.SetString("ageStage", AgeStage.ToString());
             return RedirectToAction("Index", "Chat");
@@ -61,8 +62,11 @@ namespace RandomChat.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(String email, String password)
         {
-            Login login = new Login { Email = email, PasswordHash = PBKDF2.Hash(password) };
+            
+            Login login = new Login { Email = email,  PasswordHash = PBKDF2.Hash(password) };
             _context.Logins.Add(login);
+            AppUser user = new AppUser { Email = login.Email };
+            _context.Appusers.Add(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

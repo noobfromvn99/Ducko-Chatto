@@ -7,15 +7,16 @@ namespace RandomChat.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Appusers",
+                name: "Logins",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(nullable: false),
-                    Gender = table.Column<string>(nullable: true)
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
+                    PasswordHash = table.Column<string>(maxLength: 64, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Appusers", x => x.UserID);
+                    table.PrimaryKey("PK_Logins", x => x.Email);
+                    table.CheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
                 });
 
             migrationBuilder.CreateTable(
@@ -31,42 +32,42 @@ namespace RandomChat.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Logins",
+                name: "Appusers",
                 columns: table => new
                 {
-                    Email = table.Column<string>(maxLength: 50, nullable: false),
-                    UsrID = table.Column<int>(nullable: false),
-                    PasswordHash = table.Column<string>(maxLength: 64, nullable: false)
+                    UserID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Gender = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Logins", x => x.Email);
-                    table.CheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
+                    table.PrimaryKey("PK_Appusers", x => x.UserID);
                     table.ForeignKey(
-                        name: "FK_Logins_Appusers_UsrID",
-                        column: x => x.UsrID,
-                        principalTable: "Appusers",
-                        principalColumn: "UserID",
+                        name: "FK_Appusers_Logins_Email",
+                        column: x => x.Email,
+                        principalTable: "Logins",
+                        principalColumn: "Email",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Logins_UsrID",
-                table: "Logins",
-                column: "UsrID",
+                name: "IX_Appusers_Email",
+                table: "Appusers",
+                column: "Email",
                 unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Logins");
+                name: "Appusers");
 
             migrationBuilder.DropTable(
                 name: "Verifications");
 
             migrationBuilder.DropTable(
-                name: "Appusers");
+                name: "Logins");
         }
     }
 }

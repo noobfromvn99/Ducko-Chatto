@@ -15,21 +15,21 @@ namespace RandomChat.Data
             using var context = new ChatContext(serviceProvider.GetRequiredService<DbContextOptions<ChatContext>>());
             if (context.Appusers.Any())
                 return; // DB has already been seeded.
+            context.Logins.AddRange(
+               new Login
+               {
+                   Email = "test@test.com",
+                   PasswordHash = "YBNbEL4Lk8yMEWxiKkGBeoILHTU7WZ9n8jJSy8TNx0DAzNEFVsIVNRktiQV+I8d2"
+               }
+           );
             context.Appusers.AddRange(
                 new AppUser
                 {
-                    UserID = 2100,
-                    Gender = "Male"
-                }
-            );
-            context.Logins.AddRange(
-                new Login
-                {
+                    Gender = "Male",
                     Email = "test@test.com",
-                    UsrID   = 2100,
-                    PasswordHash = "YBNbEL4Lk8yMEWxiKkGBeoILHTU7WZ9n8jJSy8TNx0DAzNEFVsIVNRktiQV+I8d2"
                 }
             );
+           
 
             context.SaveChanges();
         }

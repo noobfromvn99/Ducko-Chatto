@@ -10,12 +10,14 @@ namespace RandomChat.Models
   
     public class AppUser
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity), Key]
         public int UserID {get;set;}
-       
+        
         public string Gender { get; set; }
 
+        [Required]
+        [ForeignKey("Login")]
+        public string Email { get; set; }
         public virtual Login Login { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace RandomChat.Data
             builder.Entity<Login>().HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
 
             builder.Entity<Login>().
-                HasOne(e => e.AppUser).WithOne(e => e.Login);
+                HasOne(e => e.AppUser);
         }
     }
 }

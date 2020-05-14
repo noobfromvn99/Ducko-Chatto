@@ -21,12 +21,21 @@ namespace RandomChat.Migrations
             modelBuilder.Entity("RandomChat.Models.AppUser", b =>
                 {
                     b.Property<int>("UserID")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserID");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Appusers");
                 });
@@ -42,13 +51,7 @@ namespace RandomChat.Migrations
                         .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<int>("UsrID")
-                        .HasColumnType("int");
-
                     b.HasKey("Email");
-
-                    b.HasIndex("UsrID")
-                        .IsUnique();
 
                     b.ToTable("Logins");
 
@@ -70,11 +73,11 @@ namespace RandomChat.Migrations
                     b.ToTable("Verifications");
                 });
 
-            modelBuilder.Entity("RandomChat.Models.Login", b =>
+            modelBuilder.Entity("RandomChat.Models.AppUser", b =>
                 {
-                    b.HasOne("RandomChat.Models.AppUser", "AppUser")
-                        .WithOne("Login")
-                        .HasForeignKey("RandomChat.Models.Login", "UsrID")
+                    b.HasOne("RandomChat.Models.Login", "Login")
+                        .WithOne("AppUser")
+                        .HasForeignKey("RandomChat.Models.AppUser", "Email")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
