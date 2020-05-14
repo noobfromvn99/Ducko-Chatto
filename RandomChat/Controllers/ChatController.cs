@@ -12,6 +12,7 @@ namespace RandomChat.Controllers
     public class ChatController : Controller
     {
         private readonly ChatContext _context;
+        private ChatManger chatManger;
 
         public ChatController(ChatContext context) {
             _context = context;

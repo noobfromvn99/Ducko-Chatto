@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\RandomChat"
+    "\\RandomChat",
+    "\\RandomChat\\Controllers",
+    "\\RandomChat\\Models",
+    "\\RandomChat\\Views",
+    "\\RandomChat\\Views\\Home"
   ],
   "SelectedNode": "\\RandomChat.sln",
   "PreviewInSolutionExplorer": false

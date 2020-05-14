@@ -265,6 +265,6 @@ C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Chat\Index.cshtml.g.cs
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.csproj.CoreCompileInputs.cache
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Chat\Index.cshtml.g.cs
