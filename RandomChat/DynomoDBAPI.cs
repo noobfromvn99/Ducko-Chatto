@@ -9,7 +9,7 @@ namespace RandomChat
 {
     public class DynomoDBAPI
     {
-        private const string ApiBaseUri = "http://localhost:5001";
+        private const string ApiBaseUri = "http://localhost:5000";
 
         public static HttpClient InitializeClient()
         {

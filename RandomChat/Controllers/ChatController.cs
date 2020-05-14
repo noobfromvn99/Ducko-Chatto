@@ -16,6 +16,7 @@ namespace RandomChat.Controllers
 
         public ChatController(ChatContext context) {
             _context = context;
+            chatManger = new ChatManger();
         }
 
         public IActionResult Index()
@@ -27,6 +28,7 @@ namespace RandomChat.Controllers
             else
             {
                 ViewBag.Gender = HttpContext.Session.GetString("Gender");
+                chatManger.CreateTestTable();
                 return View();
             }
         }

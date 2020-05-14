@@ -12,9 +12,13 @@ namespace DynamoDB.Controllers
     public class DynamoDBController : ControllerBase
     {
         private readonly IDynamoDb _dynamoDB;
+        private readonly IPutItem _putItem;
+        private readonly IGetItem _getItem;
 
-        public DynamoDBController(IDynamoDb dynamoDb) {
+        public DynamoDBController(IDynamoDb dynamoDb, IPutItem putItem, IGetItem getItem) {
             _dynamoDB = dynamoDb;
+            _putItem = putItem;
+            _getItem = getItem;
         }
 
         [Route("createtable")]
@@ -23,6 +27,21 @@ namespace DynamoDB.Controllers
             _dynamoDB.createDynamoDBTable();
 
             return Ok();
+        }
+
+        [Route("send")]
+        public IActionResult Send([FromQuery]int topicId, string reply, int UserId)
+        {
+            Guid uuid = Guid.NewGuid();
+            _putItem.AddNewEntry(uuid.ToString(), topicId, reply, UserId);
+            return Ok();
+        }
+
+        [Route("getreply")]
+        public async Task<IActionResult> getItems([FromQuery] int? topicId) 
+        {
+            var response = await _getItem.GetItems(topicId);
+            return Ok(response);
         }
     }
 }

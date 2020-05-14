@@ -30,6 +30,8 @@ namespace DynamoDb.libs.DynamoDb
 
         }
 
+
+
         private void CreateTempTable()
         {
             Console.WriteLine("Creating table");
@@ -84,6 +86,7 @@ namespace DynamoDb.libs.DynamoDb
                 }
                 catch (Exception e)
                 {
+                    Console.WriteLine(e);
                 }
             } while (status != "ACTIVE");
             {

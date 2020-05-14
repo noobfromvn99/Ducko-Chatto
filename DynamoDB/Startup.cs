@@ -34,6 +34,10 @@ namespace DynamoDB
             services.AddAWSService<IAmazonDynamoDB>();
 
             services.AddSingleton<IDynamoDb, CDynamoDB>();
+
+            services.AddSingleton<IPutItem, CPutItem>();
+
+            services.AddSingleton<IGetItem, CGetItem>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
