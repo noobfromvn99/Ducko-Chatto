@@ -20,82 +20,46 @@ namespace RandomChat.Migrations
 
             modelBuilder.Entity("RandomChat.Models.AppUser", b =>
                 {
-                    b.Property<int>("UsrID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AgeStage")
+                    b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UsrID");
+                    b.HasKey("UserID");
 
                     b.ToTable("Appusers");
                 });
 
             modelBuilder.Entity("RandomChat.Models.Login", b =>
                 {
-                    b.Property<string>("LoginID")
-                        .HasColumnType("nvarchar(8)")
-                        .HasMaxLength(8);
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<int>("UsrID")
+                    b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.HasKey("LoginID");
+                    b.HasKey("Email");
 
-                    b.HasIndex("UsrID")
+                    b.HasIndex("UserID")
                         .IsUnique();
 
                     b.ToTable("Logins");
 
-                    b.HasCheckConstraint("CH_Login_LoginID", "len(LoginID) = 8");
-
                     b.HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
-                });
-
-            modelBuilder.Entity("RandomChat.Models.Message", b =>
-                {
-                    b.Property<int>("MessageID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UsrID")
-                        .HasColumnType("int");
-
-                    b.HasKey("MessageID");
-
-                    b.HasIndex("UsrID");
-
-                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("RandomChat.Models.Login", b =>
                 {
                     b.HasOne("RandomChat.Models.AppUser", "AppUser")
                         .WithOne("Login")
-                        .HasForeignKey("RandomChat.Models.Login", "UsrID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RandomChat.Models.Message", b =>
-                {
-                    b.HasOne("RandomChat.Models.AppUser", "AppUser")
-                        .WithMany("Messages")
-                        .HasForeignKey("UsrID")
+                        .HasForeignKey("RandomChat.Models.Login", "UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -3,24 +3,54 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RandomChat.Data;
 using RandomChat.Models;
+using SimpleHashing;
 
 namespace RandomChat.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
+        private readonly ChatContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ChatContext context)
         {
-            _logger = logger;
+         
+             _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetInt32(nameof(Login.UsrID)) != null)
+            {
+                return RedirectToAction("Index", "Chat");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(string Email, string Password, string Gender, string AgeStage)
+        {
+            var login = await _context.Logins.FindAsync(Email);
+            //Validation
+            if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
+            {
+                ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
+                return View(new Login { Email = Email });
+            }
+
+            // Login customer.
+            HttpContext.Session.SetInt32(nameof(Login.UsrID), login.UsrID);
+            HttpContext.Session.SetString("Gender", Gender.ToString());
+            HttpContext.Session.SetString("ageStage", AgeStage.ToString());
+            return RedirectToAction("Index", "Chat");
         }
 
         public IActionResult Privacy()
