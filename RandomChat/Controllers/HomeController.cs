@@ -25,25 +25,32 @@ namespace RandomChat.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetInt32(nameof(Login.UsrID)) != null)
+            {
+                return RedirectToAction("Index", "Chat");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string UsrID, string Password, string Gender, string AgeStage)
+        public async Task<IActionResult> Index(string Email, string Password, string Gender, string AgeStage)
         {
-            var login = await _context.Logins.FindAsync(UsrID);
+            var login = await _context.Logins.FindAsync(Email);
             //Validation
             if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
-                return View();
+                return View(new Login { Email = Email });
             }
 
             // Login customer.
             HttpContext.Session.SetInt32(nameof(Login.UsrID), login.UsrID);
             HttpContext.Session.SetString("Gender", Gender.ToString());
             HttpContext.Session.SetString("ageStage", AgeStage.ToString());
-            return View();
+            return RedirectToAction("Index", "Chat");
         }
 
         public IActionResult Privacy()
