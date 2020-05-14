@@ -189,3 +189,4 @@ C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debu
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\AWSSDK.SimpleEmail.dll
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\SimpleHashing.dll
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\aws-beanstalk-tools-defaults.json
