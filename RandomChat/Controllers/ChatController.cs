@@ -19,7 +19,7 @@ namespace RandomChat.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32(nameof(Login.AppUser)) == null)
+            if (HttpContext.Session.GetInt32(nameof(AppUser.UserID)) == null)
             {
                 return RedirectToAction("Index", "Home");
             }
