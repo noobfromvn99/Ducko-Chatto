@@ -6,3 +6,4 @@ C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\DynamoDb.libs\bin\Deb
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\DynamoDb.libs\obj\Debug\netstandard2.0\DynamoDb.libs.csproj.CoreCompileInputs.cache
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\DynamoDb.libs\obj\Debug\netstandard2.0\DynamoDb.libs.dll
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\DynamoDb.libs\obj\Debug\netstandard2.0\DynamoDb.libs.pdb
+C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\DynamoDb.libs\obj\Debug\netstandard2.0\DynamoDb.libs.csprojAssemblyReference.cache

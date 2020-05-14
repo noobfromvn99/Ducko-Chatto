@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "jKtyQy4vQKWx8EeQNfrgC676VqNc1IWLTKswvtE7rgX7LEwW6Q+GM4/KzbR6G6oNMWIfD9re+6R+E85yq7wIOA==",
+  "dgSpecHash": "C5u11JhILyzibywy8j0s669S3TWkXDK1vZRLfZD1MUMvc5VK+ho8/lWYZMTC1Bp4NCeqk6cR9EMxbpSN6aXsEQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC-user\\.nuget\\packages\\awssdk.core\\3.3.106.22\\awssdk.core.3.3.106.22.nupkg.sha512",
+    "C:\\Users\\PC-user\\.nuget\\packages\\awssdk.dynamodbv2\\3.3.106.2\\awssdk.dynamodbv2.3.3.106.2.nupkg.sha512",
     "C:\\Users\\PC-user\\.nuget\\packages\\awssdk.simpleemail\\3.3.101.148\\awssdk.simpleemail.3.3.101.148.nupkg.sha512",
     "C:\\Users\\PC-user\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\PC-user\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
