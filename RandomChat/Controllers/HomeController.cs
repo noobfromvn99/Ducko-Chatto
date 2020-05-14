@@ -39,7 +39,7 @@ namespace RandomChat.Controllers
         public async Task<IActionResult> Index(string Email, string Password, string Gender, string AgeStage)
         {
             var login = await _context.Logins.FindAsync(Email);
-            var user = await _context.Appusers.FindAsync(Email);
+            var user = _context.Appusers.Where(e => e.Email == Email).Single();
             //Validation
             if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
             {
