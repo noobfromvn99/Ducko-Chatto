@@ -49,7 +49,7 @@ namespace RandomChat.Controllers
             var login = await _context.Logins.FindAsync(Email);
             var user = _context.Appusers.Where(e => e.Email == Email).Single();
             //Validation
-            if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
+            if (login == null || Gender == null || AgeStage == null  || !PBKDF2.Verify(login.PasswordHash, Password))
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
                 return View(new Login { Email = Email });
@@ -57,7 +57,7 @@ namespace RandomChat.Controllers
             else if (login.Activate == false)
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, please activate your account and try again.");
-                return View(new Login { Email = Email });
+                return RedirectToAction("Verify", new { Email = Email });
             }
 
             // Login customer.
