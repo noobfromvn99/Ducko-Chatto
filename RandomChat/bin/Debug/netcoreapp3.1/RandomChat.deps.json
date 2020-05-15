@@ -325,15 +325,6 @@
       "AWSSDK.DynamoDBv2/3.3.106.2": {
         "dependencies": {
           "AWSSDK.Core": "3.3.106.22"
-        },
-        "runtime": {
-          "lib/netstandard2.0/AWSSDK.DynamoDBv2.dll": {
-            "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.3.106.2"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/AWSSDK.DynamoDBv2.dll": {}
         }
       },
       "AWSSDK.SimpleEmail/3.3.101.148": {
