@@ -16,7 +16,7 @@ namespace RandomChat.Data
        
         public DbSet<Login> Logins { get; set; }
 
-        public DbSet<Verification> Verifications { get; set; }
+        public DbSet<Topic> Topics { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder) //validation
         {

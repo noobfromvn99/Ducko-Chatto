@@ -2,7 +2,7 @@
 
 namespace RandomChat.Migrations
 {
-    public partial class init : Migration
+    public partial class Change : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,24 +11,14 @@ namespace RandomChat.Migrations
                 columns: table => new
                 {
                     Email = table.Column<string>(maxLength: 50, nullable: false),
-                    PasswordHash = table.Column<string>(maxLength: 64, nullable: false)
+                    PasswordHash = table.Column<string>(maxLength: 64, nullable: false),
+                    Activate = table.Column<bool>(nullable: false),
+                    Code = table.Column<string>(maxLength: 6, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Logins", x => x.Email);
                     table.CheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Verifications",
-                columns: table => new
-                {
-                    Email = table.Column<string>(maxLength: 50, nullable: false),
-                    Code = table.Column<string>(maxLength: 6, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Verifications", x => x.Email);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,9 +52,6 @@ namespace RandomChat.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Appusers");
-
-            migrationBuilder.DropTable(
-                name: "Verifications");
 
             migrationBuilder.DropTable(
                 name: "Logins");
