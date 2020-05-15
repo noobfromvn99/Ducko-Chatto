@@ -33,6 +33,15 @@ namespace RandomChat
                 // Enable lazy loading.
                 options.UseLazyLoadingProxies();
             });
+
+          
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => //enable session
+            {
+                // Make the session cookie essential.
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +63,7 @@ namespace RandomChat
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

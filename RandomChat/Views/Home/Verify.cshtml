@@ -1,0 +1,45 @@
+﻿@model Login
+@{
+    ViewBag.Title = "Verify";
+}
+<h1>Verification</h1>
+
+<form method="post" asp-controller="Home" asp-action="Verify">
+
+    <p>
+        Email:
+
+        <a>
+            <input type="text" class="form-control" name="email" data-val="true"
+                   data-val-required="The Email field is required.">
+        </a>
+
+
+    </p>
+
+    <p>
+        Verification code:
+
+        <a>
+            <input type="text" class="form-control" name="code" data-val="true"
+                   data-val-required="The verification code field is required.">
+        </a>
+
+    </p>
+
+    <div>
+        <input type="submit" value="Verify" class="btn btn-primary">
+    </div>
+
+</form>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}
+

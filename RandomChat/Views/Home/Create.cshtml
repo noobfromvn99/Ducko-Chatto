@@ -1,0 +1,44 @@
+﻿@model Login
+@{
+    ViewBag.Title = "Register";
+}
+<h1>Register</h1>
+
+<form method="post" asp-controller="Home" asp-action="Create">
+
+    <p>
+        Email:
+
+        <a>
+            <input type="text" class="form-control" name="email" data-val="true"
+                   data-val-required="The Email field is required.">
+        </a>
+
+
+    </p>
+
+    <p>
+        Password:
+
+        <a>
+            <input type="text" class="form-control" name="password" data-val="true"
+                   data-val-required="The Email field is required.">
+        </a>
+
+    </p>
+
+    <div>
+        <input type="submit" value="Register" class="btn btn-primary">
+    </div>
+
+</form>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}
