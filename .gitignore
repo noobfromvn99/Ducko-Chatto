@@ -8,3 +8,5 @@
 /.vs/RandomChat/v16/Server/sqlite3/storage.ide-wal
 .vs/slnx.sqlite
 RandomChat/bin/ 
+LambdaChatto.libs/obj/Debug
+LambdaChatto.libs/obj/Release
