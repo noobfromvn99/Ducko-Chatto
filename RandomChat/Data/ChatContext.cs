@@ -1,4 +1,5 @@
-﻿using RandomChat.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using RandomChat.Models;
 
 namespace RandomChat.Data
 {
@@ -12,7 +13,6 @@ namespace RandomChat.Data
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Login> Logins { get; set; }
 
-        public DbSet<Topic> Topics { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder) //validation
         {
