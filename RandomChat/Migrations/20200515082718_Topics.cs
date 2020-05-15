@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace RandomChat.Migrations
+﻿namespace RandomChat.Migrations
 {
     public partial class Topics : Migration
     {

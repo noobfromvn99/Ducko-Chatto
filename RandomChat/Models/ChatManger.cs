@@ -1,10 +1,6 @@
 ﻿using DynamoDb.libs.DynamoDb;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace RandomChat.Models
@@ -14,7 +10,7 @@ namespace RandomChat.Models
         private HttpClient client;
         private readonly static ChatManger _instance = new ChatManger();
 
-        public static ChatManger getInstance() 
+        public static ChatManger getInstance()
         {
             return _instance;
         }
@@ -23,7 +19,7 @@ namespace RandomChat.Models
             client = DynomoDBAPI.InitializeClient();
         }
 
-        public async void CreateTestTable() 
+        public async void CreateTestTable()
         {
             var response = await client.GetAsync("api/DynamoDB/createtable");
             if (!response.IsSuccessStatusCode)
@@ -44,7 +40,7 @@ namespace RandomChat.Models
             return DynamoTableItem;
         }
 
-        public async Task<bool> Send(int? TopicId, string content, int? UserId) 
+        public async Task<bool> Send(int? TopicId, string content, int? UserId)
         {
             var response = await client.GetAsync($"api/DynamoDB/send?TopicId={TopicId}&reply={content}&UserId={UserId}");
 

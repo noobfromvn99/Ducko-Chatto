@@ -1,5 +1,3 @@
-using System;
-
 namespace RandomChat.Models
 {
     public class ErrorViewModel

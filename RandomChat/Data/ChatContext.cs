@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RandomChat.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using RandomChat.Models;
 
 namespace RandomChat.Data
 {
@@ -13,7 +8,7 @@ namespace RandomChat.Data
         { }
 
         public DbSet<AppUser> Appusers { get; set; }
-       
+
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Login> Logins { get; set; }
 

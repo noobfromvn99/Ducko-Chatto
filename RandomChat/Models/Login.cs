@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RandomChat.Models
 {
@@ -18,7 +14,7 @@ namespace RandomChat.Models
         [Required, StringLength(64)]
         public string PasswordHash { get; set; }
 
-        
+
         public Boolean Activate { get; set; }
 
         [StringLength(6)]

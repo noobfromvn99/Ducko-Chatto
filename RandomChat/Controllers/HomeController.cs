@@ -1,35 +1,30 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using RandomChat.Attributes;
+using RandomChat.Data;
+using RandomChat.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Amazon;
-using Amazon.SimpleEmail;
-using Amazon.SimpleEmail.Model;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using RandomChat.Attributes;
-using RandomChat.Data;
-using RandomChat.Models;
-using SimpleHashing;
 
 namespace RandomChat.Controllers
 {
     public class HomeController : Controller
     {
         // ConfigurationSetName = configSet argument below. 
-        
+
         static readonly string senderAddress = "bach.rmit.5499@gmail.com";
         static readonly string subject = "Ducko-Chatto verification";
         private readonly ChatContext _context;
-      
+
 
         public HomeController(ChatContext context)
         {
-         
-             _context = context;
+
+            _context = context;
         }
 
         public IActionResult Index()
@@ -80,12 +75,14 @@ namespace RandomChat.Controllers
         public async Task<IActionResult> Verify(String email, String code)
         {
             var login = await _context.Logins.FindAsync(email);
-            if(login == null) { 
-            ViewBag.Message = String.Format("Verification fail! Email is not available");
-            return View();
-            }else if(login.Code != code)
+            if (login == null)
             {
-            ViewBag.Message = String.Format("Verification fail! Verification code is incorrect");
+                ViewBag.Message = String.Format("Verification fail! Email is not available");
+                return View();
+            }
+            else if (login.Code != code)
+            {
+                ViewBag.Message = String.Format("Verification fail! Verification code is incorrect");
                 return View();
             }
             else if (login.Activate == true)
@@ -107,7 +104,7 @@ namespace RandomChat.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(string email, string password)
         {
-            Login login = new Login { Email = email,  PasswordHash = PBKDF2.Hash(password), Activate = false, Code = GenerateCode() };
+            Login login = new Login { Email = email, PasswordHash = PBKDF2.Hash(password), Activate = false, Code = GenerateCode() };
             _context.Logins.Add(login);
             AppUser user = new AppUser { Email = login.Email };
             _context.Appusers.Add(user);
@@ -169,7 +166,8 @@ namespace RandomChat.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private string GenerateCode() {
+        private string GenerateCode()
+        {
             int length = 6;
             // creating a StringBuilder object()
             StringBuilder str_build = new StringBuilder();
@@ -186,13 +184,14 @@ namespace RandomChat.Controllers
             }
             return str_build.ToString();
         }
-        private string TextBody(string code) {
+        private string TextBody(string code)
+        {
             string message = "Welcome to Ducko-Chatto\r\n" +
                 "This email was sent with Amazon SES using the AWS SDK for .NET\r\n" +
                 "Please verify with this code:\r\n" + code +
                 "\r\nverify here";
             return message;
-                }
+        }
         // The HTML body of the email.
         private string HtmlBody(string code)
         {

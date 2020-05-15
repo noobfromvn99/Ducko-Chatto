@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using RandomChat.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace RandomChat.Data
 {
@@ -29,9 +26,9 @@ namespace RandomChat.Data
                     Email = "test@test.com",
                 }
             );
-           
+
 
             context.SaveChanges();
         }
-     }
+    }
 }

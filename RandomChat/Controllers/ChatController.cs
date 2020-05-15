@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DynamoDb.libs.DynamoDb;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RandomChat.Data;
 using RandomChat.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RandomChat.Controllers
 {
@@ -15,7 +14,8 @@ namespace RandomChat.Controllers
         private readonly ChatContext _context;
         private ChatManger chatManger;
 
-        public ChatController(ChatContext context) {
+        public ChatController(ChatContext context)
+        {
             _context = context;
             chatManger = ChatManger.getInstance();
         }
@@ -33,7 +33,7 @@ namespace RandomChat.Controllers
             }
         }
 
-        public async Task<IActionResult> List(int? id) 
+        public async Task<IActionResult> List(int? id)
         {
             Topic topic = _context.Topics.Find(id);
             var TopicItem = await chatManger.GetReply(id);
@@ -42,10 +42,10 @@ namespace RandomChat.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Reply(int? TopicId, string content) 
+        public async Task<IActionResult> Reply(int? TopicId, string content)
         {
             int? UserId = HttpContext.Session.GetInt32(nameof(AppUser.UserID));
-            if (await chatManger.Send(TopicId, content, UserId)) 
+            if (await chatManger.Send(TopicId, content, UserId))
             {
                 return RedirectToAction("List", new { id = TopicId });
             }
@@ -54,7 +54,7 @@ namespace RandomChat.Controllers
                 ModelState.AddModelError("Error", "Error when insertting your comment.");
                 return RedirectToAction("List", new { id = TopicId });
             }
-            
+
         }
 
         public IActionResult Create()
@@ -66,7 +66,7 @@ namespace RandomChat.Controllers
         public IActionResult Create(string TopicName)
         {
             int UserId = Convert.ToInt32(HttpContext.Session.GetInt32(nameof(AppUser.UserID)));
-            if (UserId == 0 || TopicName == null) 
+            if (UserId == 0 || TopicName == null)
             {
                 ModelState.AddModelError("Error", "Error when insertting your topic.");
                 return View();
