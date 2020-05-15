@@ -20,82 +20,64 @@ namespace RandomChat.Migrations
 
             modelBuilder.Entity("RandomChat.Models.AppUser", b =>
                 {
-                    b.Property<int>("UsrID")
+                    b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AgeStage")
-                        .HasColumnType("int");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UsrID");
+                    b.HasKey("UserID");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Appusers");
                 });
 
             modelBuilder.Entity("RandomChat.Models.Login", b =>
                 {
-                    b.Property<string>("LoginID")
-                        .HasColumnType("nvarchar(8)")
-                        .HasMaxLength(8);
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
-                    b.Property<int>("UsrID")
-                        .HasColumnType("int");
-
-                    b.HasKey("LoginID");
-
-                    b.HasIndex("UsrID")
-                        .IsUnique();
+                    b.HasKey("Email");
 
                     b.ToTable("Logins");
-
-                    b.HasCheckConstraint("CH_Login_LoginID", "len(LoginID) = 8");
 
                     b.HasCheckConstraint("CH_Login_PasswordHash", "len(PasswordHash) = 64");
                 });
 
-            modelBuilder.Entity("RandomChat.Models.Message", b =>
+            modelBuilder.Entity("RandomChat.Models.Verification", b =>
                 {
-                    b.Property<int>("MessageID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
 
-                    b.Property<int>("UsrID")
-                        .HasColumnType("int");
+                    b.HasKey("Email");
 
-                    b.HasKey("MessageID");
-
-                    b.HasIndex("UsrID");
-
-                    b.ToTable("Messages");
+                    b.ToTable("Verifications");
                 });
 
-            modelBuilder.Entity("RandomChat.Models.Login", b =>
+            modelBuilder.Entity("RandomChat.Models.AppUser", b =>
                 {
-                    b.HasOne("RandomChat.Models.AppUser", "AppUser")
-                        .WithOne("Login")
-                        .HasForeignKey("RandomChat.Models.Login", "UsrID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RandomChat.Models.Message", b =>
-                {
-                    b.HasOne("RandomChat.Models.AppUser", "AppUser")
-                        .WithMany("Messages")
-                        .HasForeignKey("UsrID")
+                    b.HasOne("RandomChat.Models.Login", "Login")
+                        .WithOne("AppUser")
+                        .HasForeignKey("RandomChat.Models.AppUser", "Email")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

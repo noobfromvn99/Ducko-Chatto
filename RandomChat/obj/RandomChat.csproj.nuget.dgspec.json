@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj": {}
+    "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj": {
+    "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
+        "projectUniqueName": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
         "projectName": "RandomChat",
-        "projectPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
-        "packagesPath": "C:\\Users\\Bach Rach\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\obj\\",
+        "projectPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
+        "packagesPath": "C:\\Users\\PC-user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Bach Rach\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC-user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,6 +38,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AWSSDK.SimpleEmail": {
+              "target": "Package",
+              "version": "[3.3.101.148, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -58,6 +59,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "SimpleHashing": {
+              "target": "Package",
+              "version": "[1.0.3.1, )"
             }
           },
           "imports": [
@@ -78,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
