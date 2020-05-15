@@ -1,10 +1,10 @@
 ﻿@model Login
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Verify";
 }
-<h1>Register</h1>
+<h1>Verification</h1>
 
-<form method="post" asp-controller="Home" asp-action="Create">
+<form method="post" asp-controller="Home" asp-action="Verify">
 
     <p>
         Email:
@@ -18,17 +18,17 @@
     </p>
 
     <p>
-        Password:
+        Verification code:
 
         <a>
-            <input type="text" class="form-control" name="password" data-val="true"
-                   data-val-required="The Email field is required.">
+            <input type="text" class="form-control" name="code" data-val="true"
+                   data-val-required="The verification code field is required.">
         </a>
 
     </p>
 
     <div>
-        <input type="submit" value="Register" class="btn btn-primary">
+        <input type="submit" value="Verify" class="btn btn-primary">
     </div>
 
 </form>
@@ -42,3 +42,4 @@
     </script>
 
 }
+

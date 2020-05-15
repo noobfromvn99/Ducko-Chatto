@@ -34,6 +34,8 @@ namespace RandomChat
                 options.UseLazyLoadingProxies();
             });
 
+          
+
             services.AddDistributedMemoryCache();
             services.AddSession(options => //enable session
             {

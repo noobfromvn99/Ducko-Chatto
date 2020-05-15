@@ -18,5 +18,15 @@ namespace RandomChat.Models
         [Required, StringLength(64)]
         public string PasswordHash { get; set; }
 
+        
+        public Boolean Activate { get; set; }
+
+        [StringLength(6)]
+        public string Code { get; set; }
+
+        public void Verify()
+        {
+            Activate = true;
+        }
     }
 }
