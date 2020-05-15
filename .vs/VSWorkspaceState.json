@@ -5,8 +5,9 @@
     "\\RandomChat\\Controllers",
     "\\RandomChat\\Models",
     "\\RandomChat\\Views",
-    "\\RandomChat\\Views\\Home"
+    "\\RandomChat\\Views\\Home",
+    "\\RandomChat\\Views\\Shared"
   ],
-  "SelectedNode": "\\RandomChat.sln",
+  "SelectedNode": "\\RandomChat\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }
