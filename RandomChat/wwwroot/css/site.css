@@ -1,6 +1,50 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+body {
+    background-image: url("../css/img/image.png");
+    background-repeat: no-repeat; 
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.animation {
+    width: 200px;
+    height: 30px;
+}
+.img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes example {
+    0% {
+        left: 0px;
 
+    }
+
+    25% {
+        left: 50px;
+ 
+    }
+
+    50% {
+        left: 100px;
+    }
+
+    75% {
+        left: 150px;
+    }
+
+    100% {
+        left: 200px;
+    }
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -81,5 +125,5 @@ body {
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  line-height: 30px; /* Vertically center the text there */
 }

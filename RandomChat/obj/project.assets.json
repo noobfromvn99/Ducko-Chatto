@@ -11,6 +11,18 @@
           "lib/netstandard2.0/AWSSDK.Core.dll": {}
         }
       },
+      "AWSSDK.DynamoDBv2/3.3.106.2": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "[3.3.106.22, 3.4.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSSDK.DynamoDBv2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.DynamoDBv2.dll": {}
+        }
+      },
       "AWSSDK.SimpleEmail/3.3.101.148": {
         "type": "package",
         "dependencies": {
@@ -2625,6 +2637,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "DynamoDb.libs/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "AWSSDK.DynamoDBv2": "3.3.106.2"
+        },
+        "compile": {
+          "bin/placeholder/DynamoDb.libs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DynamoDb.libs.dll": {}
+        }
       }
     }
   },
@@ -2676,6 +2701,46 @@
         "lib/wpa81/AWSSDK.Core.dll",
         "lib/wpa81/AWSSDK.Core.pdb",
         "tools/account-management.ps1"
+      ]
+    },
+    "AWSSDK.DynamoDBv2/3.3.106.2": {
+      "sha512": "KfKLrkrwIzUnpoQpKv4DDAd/Vb5IWI1aJPlol26mJtHdo52duNdhR/FX+2UHoX7uArmyFN9YwA1Qky7udNw/qg==",
+      "type": "package",
+      "path": "awssdk.dynamodbv2/3.3.106.2",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/dotnet/cs/AWSSDK.DynamoDBv2.CodeAnalysis.dll",
+        "awssdk.dynamodbv2.3.3.106.2.nupkg.sha512",
+        "awssdk.dynamodbv2.nuspec",
+        "lib/MonoAndroid10/AWSSDK.DynamoDBv2.XML",
+        "lib/MonoAndroid10/AWSSDK.DynamoDBv2.dll",
+        "lib/MonoTouch10/AWSSDK.DynamoDBv2.XML",
+        "lib/MonoTouch10/AWSSDK.DynamoDBv2.dll",
+        "lib/MonoTouch10/AWSSDK.DynamoDBv2.pdb",
+        "lib/Xamarin.iOS10/AWSSDK.DynamoDBv2.XML",
+        "lib/Xamarin.iOS10/AWSSDK.DynamoDBv2.dll",
+        "lib/net35/AWSSDK.DynamoDBv2.dll",
+        "lib/net35/AWSSDK.DynamoDBv2.pdb",
+        "lib/net35/AWSSDK.DynamoDBv2.xml",
+        "lib/net45/AWSSDK.DynamoDBv2.dll",
+        "lib/net45/AWSSDK.DynamoDBv2.pdb",
+        "lib/net45/AWSSDK.DynamoDBv2.xml",
+        "lib/netstandard1.3/AWSSDK.DynamoDBv2.dll",
+        "lib/netstandard1.3/AWSSDK.DynamoDBv2.pdb",
+        "lib/netstandard1.3/AWSSDK.DynamoDBv2.xml",
+        "lib/netstandard2.0/AWSSDK.DynamoDBv2.dll",
+        "lib/netstandard2.0/AWSSDK.DynamoDBv2.pdb",
+        "lib/netstandard2.0/AWSSDK.DynamoDBv2.xml",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.DynamoDBv2.XML",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.DynamoDBv2.dll",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.DynamoDBv2.pdb",
+        "lib/uap/AWSSDK.DynamoDBv2.XML",
+        "lib/uap/AWSSDK.DynamoDBv2.dll",
+        "lib/uap/AWSSDK.DynamoDBv2.pdb",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
       ]
     },
     "AWSSDK.SimpleEmail/3.3.101.148": {
@@ -8596,11 +8661,17 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "DynamoDb.libs/1.0.0": {
+      "type": "project",
+      "path": "../DynamoDb.libs/DynamoDb.libs.csproj",
+      "msbuildProject": "../DynamoDb.libs/DynamoDb.libs.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AWSSDK.SimpleEmail >= 3.3.101.148",
+      "DynamoDb.libs >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 3.1.1",
       "Microsoft.EntityFrameworkCore.Proxies >= 3.1.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.1",
@@ -8638,7 +8709,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
+              "projectPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
