@@ -17,6 +17,10 @@
     <PackageReference Include="SimpleHashing" Version="1.0.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DynamoDb.libs\DynamoDb.libs.csproj" />
+  </ItemGroup>
+
 
 
 </Project>

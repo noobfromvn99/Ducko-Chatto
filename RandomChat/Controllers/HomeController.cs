@@ -59,8 +59,10 @@ namespace RandomChat.Controllers
             return View();
         }
 
+
+
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(String email, String password)
+        public async Task<IActionResult> CreateAsync(string email, string password)
         {
             
             Login login = new Login { Email = email,  PasswordHash = PBKDF2.Hash(password) };
