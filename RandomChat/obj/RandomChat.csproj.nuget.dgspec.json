@@ -1,9 +1,10 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj": {}
+    "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj": {}
   },
   "projects": {
+<<<<<<< HEAD
     "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -64,16 +65,84 @@
       }
     },
     "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj": {
+=======
+    "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
+>>>>>>> df46f177415872a14eff69c99ae85b21c8c19872
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
-        "projectName": "RandomChat",
-        "projectPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
-        "packagesPath": "C:\\Users\\PC-user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\obj\\",
+        "projectUniqueName": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj",
+        "projectName": "DynamoDb.libs",
+        "projectPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj",
+        "packagesPath": "C:\\Users\\Bach Rach\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\PC-user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bach Rach\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "AWSSDK.DynamoDBv2": {
+              "target": "Package",
+              "version": "[3.3.106.2, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
+        "projectName": "RandomChat",
+        "projectPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
+        "packagesPath": "C:\\Users\\Bach Rach\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Bach Rach\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,8 +155,13 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
                 "projectPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj"
+=======
+              "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
+                "projectPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj"
+>>>>>>> df46f177415872a14eff69c99ae85b21c8c19872
               }
             }
           }
@@ -150,7 +224,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

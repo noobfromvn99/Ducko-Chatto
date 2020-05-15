@@ -344,7 +344,16 @@ C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Chat\Index.cshtml.g.cs
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.genruntimeconfig.cache
+<<<<<<< HEAD
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\DynamoDb.libs.dll
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\DynamoDb.libs.pdb
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Chat\Create.cshtml.g.cs
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Chat\List.cshtml.g.cs
+=======
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Home\Verify.cshtml.g.cs
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\AWSSDK.DynamoDBv2.dll
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\DynamoDb.libs.dll
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\DynamoDb.libs.pdb
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Chat\Create.cshtml.g.cs
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Chat\List.cshtml.g.cs
+>>>>>>> df46f177415872a14eff69c99ae85b21c8c19872
