@@ -1,20 +1,24 @@
-﻿@model Topic
+﻿@model RandomChat.Models.Topic
+
 @{
-    ViewData["Title"] = "Topic posts";
+    ViewData["Title"] = "Topic replies";
 }
 
-<h1>@Html.DisplayFor(model => model.TopicName)</h1>
+<h1>@Html.DisplayFor(Model => Model.TopicName)</h1>
 
-@foreach (var reply in @ViewBag.replies)
+@foreach (var reply in ViewBag.replies)
 {
-    <p>Anonymous: @reply.Reply  @reply.ReplyOn</p>
+    <p>Anonymous: @reply.Reply on @reply.ReplyOn</p>
 }
 
-<form asp-action="Reply" style="margin-left:25px;">
-    <input name="content" id="content" placeholder="Enter reply content" class="form-control" />
-    <input type="hidden" name="TopicId" id="TopicId" value="@Html.DisplayFor(model => model.TopicId)" />
-    <div class="form-group">
-        <button type="submit" value="Reply" class="btn btn-primary">Submit</button>
-    </div>
+<form asp-action="Reply">
+    <input name="content" id="content" class="form-control" placeholder="Leave some short and nice comment :)"/>
+    <input type="hidden" name="TopicId" id="TopicId" value="@Html.DisplayFor(Model => Model.TopicId)" />
+    <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+    @Html.ValidationMessage("Error", new { @class = "text-danger" })
 </form>
-@Html.ValidationMessage("Error", new { @class = "text-danger" })
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+

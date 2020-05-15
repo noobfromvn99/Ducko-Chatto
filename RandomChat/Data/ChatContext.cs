@@ -14,6 +14,7 @@ namespace RandomChat.Data
 
         public DbSet<AppUser> Appusers { get; set; }
        
+        public DbSet<Topic> Topics { get; set; }
         public DbSet<Login> Logins { get; set; }
 
         public DbSet<Topic> Topics { get; set; }

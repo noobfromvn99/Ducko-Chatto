@@ -1,8 +1,23 @@
-﻿
+﻿@model IEnumerable<Topic>
+
 @{
     ViewData["Title"] = "Start Chatting";
 }
-
-<h1>Welcome</h1>
-<a>@ViewBag.Gender</a>
-
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+<div classs="row">
+    @foreach (Topic topic in Model)
+    {
+    <div class="card mb-3">
+        <div class="card-header">
+            @topic.TopicName
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@topic.TopicName</h5>
+            <p class="card-text">Sample reply.</p>
+            <a asp-action="List" asp-route-id="@topic.TopicId" class="btn btn-primary">Learn more</a>
+        </div>
+    </div>
+    }
+</div>

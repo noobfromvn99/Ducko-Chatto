@@ -12,7 +12,13 @@ namespace RandomChat.Models
     public class ChatManger
     {
         private HttpClient client;
-        public ChatManger()
+        private readonly static ChatManger _instance = new ChatManger();
+
+        public static ChatManger getInstance() 
+        {
+            return _instance;
+        }
+        private ChatManger()
         {
             client = DynomoDBAPI.InitializeClient();
         }
@@ -36,6 +42,16 @@ namespace RandomChat.Models
             var DynamoTableItem = JsonConvert.DeserializeObject<DynamoTableItem>(result);
 
             return DynamoTableItem;
+        }
+
+        public async Task<bool> Send(int? TopicId, string content, int? UserId) 
+        {
+            var response = await client.GetAsync($"api/DynamoDB/send?TopicId={TopicId}&reply={content}&UserId={UserId}");
+
+            if (!response.IsSuccessStatusCode)
+                return false;
+
+            return true;
         }
 
     }
