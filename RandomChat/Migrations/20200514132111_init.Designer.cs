@@ -9,8 +9,8 @@ using RandomChat.Data;
 namespace RandomChat.Migrations
 {
     [DbContext(typeof(ChatContext))]
-    [Migration("20200514120845_Init")]
-    partial class Init
+    [Migration("20200514132111_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
