@@ -25,7 +25,6 @@
       "RandomChat/1.0.0": {
         "dependencies": {
           "AWSSDK.SimpleEmail": "3.3.101.148",
-          "DynamoDb.libs": "1.0.0",
           "Microsoft.EntityFrameworkCore": "3.1.1",
           "Microsoft.EntityFrameworkCore.Proxies": "3.1.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.1",
@@ -320,20 +319,6 @@
         },
         "compile": {
           "lib/netstandard2.0/AWSSDK.Core.dll": {}
-        }
-      },
-      "AWSSDK.DynamoDBv2/3.3.106.2": {
-        "dependencies": {
-          "AWSSDK.Core": "3.3.106.22"
-        },
-        "runtime": {
-          "lib/netstandard2.0/AWSSDK.DynamoDBv2.dll": {
-            "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.3.106.2"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/AWSSDK.DynamoDBv2.dll": {}
         }
       },
       "AWSSDK.SimpleEmail/3.3.101.148": {
@@ -2235,17 +2220,6 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "DynamoDb.libs/1.0.0": {
-        "dependencies": {
-          "AWSSDK.DynamoDBv2": "3.3.106.2"
-        },
-        "runtime": {
-          "DynamoDb.libs.dll": {}
-        },
-        "compile": {
-          "DynamoDb.libs.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -3887,13 +3861,6 @@
       "path": "awssdk.core/3.3.106.22",
       "hashPath": "awssdk.core.3.3.106.22.nupkg.sha512"
     },
-    "AWSSDK.DynamoDBv2/3.3.106.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-KfKLrkrwIzUnpoQpKv4DDAd/Vb5IWI1aJPlol26mJtHdo52duNdhR/FX+2UHoX7uArmyFN9YwA1Qky7udNw/qg==",
-      "path": "awssdk.dynamodbv2/3.3.106.2",
-      "hashPath": "awssdk.dynamodbv2.3.3.106.2.nupkg.sha512"
-    },
     "AWSSDK.SimpleEmail/3.3.101.148": {
       "type": "package",
       "serviceable": true,
@@ -5006,11 +4973,6 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
-    },
-    "DynamoDb.libs/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",

@@ -344,6 +344,3 @@ C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Chat\Index.cshtml.g.cs
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.genruntimeconfig.cache
-C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\AWSSDK.DynamoDBv2.dll
-C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\DynamoDb.libs.dll
-C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\DynamoDb.libs.pdb

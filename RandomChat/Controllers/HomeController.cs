@@ -39,7 +39,7 @@ namespace RandomChat.Controllers
         public async Task<IActionResult> Index(string Email, string Password, string Gender, string AgeStage)
         {
             var login = await _context.Logins.FindAsync(Email);
-            
+            var user = _context.Appusers.Where(e => e.Email == Email).Single();
             //Validation
             if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
             {
@@ -47,8 +47,7 @@ namespace RandomChat.Controllers
                 return View(new Login { Email = Email });
             }
 
-            // Login user.
-            var user = _context.Appusers.Where(e => e.Email == login.Email).Single();
+            // Login customer.
             HttpContext.Session.SetInt32(nameof(AppUser.UserID), user.UserID);
             HttpContext.Session.SetString("Gender", Gender.ToString());
             HttpContext.Session.SetString("ageStage", AgeStage.ToString());
