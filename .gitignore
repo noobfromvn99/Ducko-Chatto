@@ -8,3 +8,5 @@
 /.vs/RandomChat/v16/Server/sqlite3/storage.ide-wal
 .vs/slnx.sqlite
 RandomChat/bin/ 
+DynamoDB/bin/ 
+DynamoDB.libs/bin/ 
