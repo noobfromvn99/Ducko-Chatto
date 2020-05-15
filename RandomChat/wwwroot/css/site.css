@@ -8,7 +8,6 @@ body {
     background-size: cover;
 }
 .animation {
-    width: 200px;
     height: 30px;
 }
 .img {
@@ -16,33 +15,34 @@ body {
     height: 30px;
     position: relative;
     animation-name: example;
-    animation-duration: 5s;
+    animation-duration: 10s;
     animation-timing-function: linear;
-    animation-delay: 1s;
+    animation-delay: 0s;
     animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation-direction: initial;
 }
 @keyframes example {
     0% {
-        left: 0px;
+        left: 10%;
 
     }
 
     25% {
-        left: 50px;
- 
+        left: 50%;
     }
 
     50% {
-        left: 100px;
+        left: 90%;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
     }
 
     75% {
-        left: 150px;
+        left: 50%;
     }
 
     100% {
-        left: 200px;
+        left: 10%;
     }
 }
 a.navbar-brand {

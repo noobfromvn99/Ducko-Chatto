@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Amazon;
+using Amazon.SimpleEmail;
+using Amazon.SimpleEmail.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RandomChat.Attributes;
 using RandomChat.Data;
@@ -9,6 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleHashing;
 
 namespace RandomChat.Controllers
 {
