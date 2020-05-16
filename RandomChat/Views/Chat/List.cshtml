@@ -11,13 +11,14 @@
     <p>Anonymous: @reply.Reply on @reply.ReplyOn</p>
 }
 
-<form asp-action="Reply">
-    <input name="content" id="content" class="form-control" placeholder="Leave some short and nice comment :)"/>
-    <input type="hidden" name="TopicId" id="TopicId" value="@Html.DisplayFor(Model => Model.TopicId)" />
-    <button type="submit" value="submit" class="btn btn-primary">Submit</button>
-    @Html.ValidationMessage("Error", new { @class = "text-danger" })
-</form>
-
+<div class="topics-container">
+    <form asp-action="Reply">
+        <input name="content" id="content" class="form-control" placeholder="Leave some short and nice comment :)" />
+        <input type="hidden" name="TopicId" id="TopicId" value="@Html.DisplayFor(Model => Model.TopicId)" />
+        <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+        @Html.ValidationMessage("Error", new { @class = "text-danger" })
+    </form>
+</div>
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

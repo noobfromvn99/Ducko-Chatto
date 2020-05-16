@@ -2,7 +2,7 @@
 
 namespace RandomChat.Migrations
 {
-    public partial class Change : Migration
+    public partial class updateusermodel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,7 @@ namespace RandomChat.Migrations
                 {
                     UserID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Gender = table.Column<string>(nullable: true),
+                    Location = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -41,15 +41,43 @@ namespace RandomChat.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Topics",
+                columns: table => new
+                {
+                    TopicId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TopicName = table.Column<string>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Topics", x => x.TopicId);
+                    table.ForeignKey(
+                        name: "FK_Topics_Appusers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Appusers",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Appusers_Email",
                 table: "Appusers",
                 column: "Email",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Topics_UserId",
+                table: "Topics",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Topics");
+
             migrationBuilder.DropTable(
                 name: "Appusers");
 

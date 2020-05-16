@@ -3,11 +3,10 @@
     "",
     "\\RandomChat",
     "\\RandomChat\\Controllers",
-    "\\RandomChat\\Models",
     "\\RandomChat\\Views",
     "\\RandomChat\\Views\\Home",
     "\\RandomChat\\Views\\Shared"
   ],
-  "SelectedNode": "\\RandomChat\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\RandomChat.sln",
   "PreviewInSolutionExplorer": false
 }
