@@ -61,7 +61,7 @@ namespace RandomChat.Controllers
             }
 
             // Login customer.
-            HttpContext.Session.SetInt32(nameof(AppUser.UserID), user.UserID);
+            HttpContext.Session.SetInt32(nameof(AppUser.UserID), Convert.ToInt32(user.UserID));
             HttpContext.Session.SetString("Gender", Gender.ToString());
             HttpContext.Session.SetString("ageStage", AgeStage.ToString());
             return RedirectToAction("Index", "Chat");

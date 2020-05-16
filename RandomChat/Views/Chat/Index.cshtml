@@ -9,23 +9,36 @@
         </li>
 
         <li class="nav-item" style="float:right;">
-            <a href="#">
+            <a id="btnRefresh">
                 <span class="glyphicon glyphicon-refresh"></span>
             </a>
         </li>
     </ul>
-        <div classs="row">
-            @foreach (Topic topic in Model)
-            {
-                <div class="card mb-3">
-                    <div class="card-header">
-                        @topic.TopicName
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">@topic.TopicName</h5>
-                        <p class="card-text">Sample reply.</p>
-                        <a asp-action="List" asp-route-id="@topic.TopicId" class="btn btn-primary">Learn more</a>
-                    </div>
-                </div>
-            }
+    <form asp-controller="PostPartial">
+        <div id="loader" style="display:none;"></div>
+        <div id="posts">
+
         </div>
+    </form>
+<script>
+    $.ajax({
+        url: "/PostPartial/ReList",
+        type: "Get",
+        success: function (response) {
+            $("#posts").html(response)
+        }
+    });
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("posts").style.display = "block";
+    }
+
+    $("#btnRefresh").click(function () {
+        document.getElementById("loader").style.display = "block";
+        document.getElementById("posts").style.display = "none";
+        setTimeout(showPage, 1000);
+        $("#posts").load("/PostPartial/ReList");
+    }
+    );
+</script>
