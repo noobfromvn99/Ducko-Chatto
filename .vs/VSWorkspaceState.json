@@ -4,8 +4,7 @@
     "\\RandomChat",
     "\\RandomChat\\Controllers",
     "\\RandomChat\\Views",
-    "\\RandomChat\\Views\\Home",
-    "\\RandomChat\\Views\\Shared"
+    "\\RandomChat\\Views\\Chat"
   ],
   "SelectedNode": "\\RandomChat.sln",
   "PreviewInSolutionExplorer": false

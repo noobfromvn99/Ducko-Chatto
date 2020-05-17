@@ -72,8 +72,15 @@ namespace RandomChat.Controllers
             }
 
             Topic topic = new Topic { TopicName = "#" + TopicName, UserId = UserId };
-            _context.Topics.Add(topic);
-            _context.SaveChanges();
+            try
+            {
+                _context.Topics.Add(topic);
+                _context.SaveChanges();
+            }
+            catch (Exception) 
+            {
+                ModelState.AddModelError("Error", "Error when inserting your topic. Your topic name might be token.");
+            }
             return RedirectToAction("List", new { id = topic.TopicId });
         }
 

@@ -27,5 +27,13 @@ namespace RandomChat.Controllers
 
             return PartialView("_ReList", topics);
         }
+
+        [HttpGet]
+        public IActionResult Search(string content) 
+        {
+            List<Topic> topics = _context.Topics.Where(e => e.TopicName.Contains(content)).ToList();
+
+            return PartialView("_ReList", topics);
+        }
     }
 }

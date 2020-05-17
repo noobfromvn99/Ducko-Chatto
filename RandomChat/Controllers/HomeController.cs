@@ -112,48 +112,59 @@ namespace RandomChat.Controllers
             _context.Logins.Add(login);
             AppUser user = new AppUser { Email = login.Email };
             _context.Appusers.Add(user);
-            await _context.SaveChangesAsync();
-            using (var client = new AmazonSimpleEmailServiceClient(RegionEndpoint.USEast1))
+            try
             {
-                var sendRequest = new SendEmailRequest
+                await _context.SaveChangesAsync();
+                using (var client = new AmazonSimpleEmailServiceClient(RegionEndpoint.USEast1))
                 {
-                    Source = senderAddress,
-                    Destination = new Destination
+                    var sendRequest = new SendEmailRequest
                     {
-                        ToAddresses =
-                        new List<string> { email }
-                    },
-                    Message = new Message
-                    {
-                        Subject = new Content(subject),
-                        Body = new Body
+                        Source = senderAddress,
+                        Destination = new Destination
                         {
-                            Html = new Content
+                            ToAddresses =
+                            new List<string> { email }
+                        },
+                        Message = new Message
+                        {
+                            Subject = new Content(subject),
+                            Body = new Body
                             {
-                                Charset = "UTF-8",
-                                Data = HtmlBody(login.Code)
-                            },
-                            Text = new Content
-                            {
-                                Charset = "UTF-8",
-                                Data = TextBody(login.Code)
+                                Html = new Content
+                                {
+                                    Charset = "UTF-8",
+                                    Data = HtmlBody(login.Code)
+                                },
+                                Text = new Content
+                                {
+                                    Charset = "UTF-8",
+                                    Data = TextBody(login.Code)
+                                }
                             }
-                        }
-                    },
+                        },
 
-                };
-                try
-                {
+                    };
+                    try
+                    {
 
-                    var response = client.SendEmailAsync(sendRequest);
-                    ViewBag.Message = String.Format("Send Email successfully");
+                        var response = client.SendEmailAsync(sendRequest);
+                        ViewBag.Message = String.Format("Send Email successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.Message = String.Format("Send Email fails: " + ex.Message);
+
+                    }
                 }
-                catch (Exception ex)
-                {
-                    ViewBag.Message = String.Format("Send Email fails: " + ex.Message);
 
-                }
             }
+            catch (Exception) 
+            {
+                ModelState.AddModelError("Insert", "Sign up failed, email has been token.");
+            }
+
+
+           
             return View();
         }
         [Authorize]
