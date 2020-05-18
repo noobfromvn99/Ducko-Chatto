@@ -19,6 +19,7 @@
         @Html.ValidationMessage("Error", new { @class = "text-danger" })
     </form>
 </div>
+
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "AWSSDK.Core/3.3.106.22": {
+      "AWSSDK.Core/3.3.106.24": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/AWSSDK.Core.dll": {}
@@ -21,6 +21,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/AWSSDK.DynamoDBv2.dll": {}
+        }
+      },
+      "AWSSDK.S3/3.3.110.70": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "[3.3.106.24, 3.4.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSSDK.S3.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.S3.dll": {}
         }
       },
       "AWSSDK.SimpleEmail/3.3.101.148": {
@@ -2654,15 +2666,15 @@
     }
   },
   "libraries": {
-    "AWSSDK.Core/3.3.106.22": {
-      "sha512": "mwRh922ZgNhsqz5u2PJLWi0sdqACo+Ai3IgY5zkKblNLtMuoVW7vCeGY+TWFHF+LMScd6QmP/1JUGjsjqqwuxg==",
+    "AWSSDK.Core/3.3.106.24": {
+      "sha512": "Os4X83h8p0hp+xGVeJUeSDusXfvWS1VUgFElu8pT8NawVKHuIz1V+uuhDu+MX2ukiXqNzI2FOsQTQoU1dzLnMg==",
       "type": "package",
-      "path": "awssdk.core/3.3.106.22",
+      "path": "awssdk.core/3.3.106.24",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "awssdk.core.3.3.106.22.nupkg.sha512",
+        "awssdk.core.3.3.106.24.nupkg.sha512",
         "awssdk.core.nuspec",
         "lib/MonoAndroid10/AWSSDK.Core.XML",
         "lib/MonoAndroid10/AWSSDK.Core.dll",
@@ -2739,6 +2751,46 @@
         "lib/uap/AWSSDK.DynamoDBv2.XML",
         "lib/uap/AWSSDK.DynamoDBv2.dll",
         "lib/uap/AWSSDK.DynamoDBv2.pdb",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "AWSSDK.S3/3.3.110.70": {
+      "sha512": "bsDC5036KSrvVSzq5YX9AwF2MHRA8tzgNHVhG8unxeSERjfhLe4LYQF16vZxzqKGk1o+tkRiZJqeo2QhRRWy7w==",
+      "type": "package",
+      "path": "awssdk.s3/3.3.110.70",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/dotnet/cs/AWSSDK.S3.CodeAnalysis.dll",
+        "awssdk.s3.3.3.110.70.nupkg.sha512",
+        "awssdk.s3.nuspec",
+        "lib/MonoAndroid10/AWSSDK.S3.XML",
+        "lib/MonoAndroid10/AWSSDK.S3.dll",
+        "lib/MonoTouch10/AWSSDK.S3.XML",
+        "lib/MonoTouch10/AWSSDK.S3.dll",
+        "lib/MonoTouch10/AWSSDK.S3.pdb",
+        "lib/Xamarin.iOS10/AWSSDK.S3.XML",
+        "lib/Xamarin.iOS10/AWSSDK.S3.dll",
+        "lib/net35/AWSSDK.S3.dll",
+        "lib/net35/AWSSDK.S3.pdb",
+        "lib/net35/AWSSDK.S3.xml",
+        "lib/net45/AWSSDK.S3.dll",
+        "lib/net45/AWSSDK.S3.pdb",
+        "lib/net45/AWSSDK.S3.xml",
+        "lib/netstandard1.3/AWSSDK.S3.dll",
+        "lib/netstandard1.3/AWSSDK.S3.pdb",
+        "lib/netstandard1.3/AWSSDK.S3.xml",
+        "lib/netstandard2.0/AWSSDK.S3.dll",
+        "lib/netstandard2.0/AWSSDK.S3.pdb",
+        "lib/netstandard2.0/AWSSDK.S3.xml",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.S3.XML",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.S3.dll",
+        "lib/portable-net45+win8+wpa81+wp8/AWSSDK.S3.pdb",
+        "lib/uap/AWSSDK.S3.XML",
+        "lib/uap/AWSSDK.S3.dll",
+        "lib/uap/AWSSDK.S3.pdb",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
@@ -8579,6 +8631,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "AWSSDK.S3 >= 3.3.110.70",
       "AWSSDK.SimpleEmail >= 3.3.101.148",
       "DynamoDb.libs >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 3.1.1",
@@ -8590,19 +8643,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC-user\\.nuget\\packages\\": {}
+    "C:\\Users\\Bach Rach\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
+      "projectUniqueName": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
       "projectName": "RandomChat",
-      "projectPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
-      "packagesPath": "C:\\Users\\PC-user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\obj\\",
+      "projectPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\RandomChat.csproj",
+      "packagesPath": "C:\\Users\\Bach Rach\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\RandomChat\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\PC-user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bach Rach\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8615,8 +8672,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
-              "projectPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj"
+            "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
+              "projectPath": "C:\\Users\\Bach Rach\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj"
             }
           }
         }
@@ -8630,6 +8687,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "AWSSDK.S3": {
+            "target": "Package",
+            "version": "[3.3.110.70, )"
+          },
           "AWSSDK.SimpleEmail": {
             "target": "Package",
             "version": "[3.3.101.148, )"
@@ -8679,7 +8740,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

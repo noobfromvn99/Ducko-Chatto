@@ -1,8 +1,6 @@
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.csprojAssemblyReference.cache
-C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.csproj.ResolveComReference.cache
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\staticwebassets\RandomChat.StaticWebAssets.Manifest.cache
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\staticwebassets\RandomChat.StaticWebAssets.xml
-C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.RazorAssemblyInfo.cache
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.RazorAssemblyInfo.cs
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.AssemblyInfoInputs.cache
@@ -307,3 +305,7 @@ C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.genruntimeconfig.cache
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\PostPartial\_ReList.cshtml.g.cs
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\PostPartial\_ReList.cshtml.g.cs
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\AWSSDK.S3.dll
+C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.MvcApplicationPartsAssemblyInfo.cache
