@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using RandomChat.Data;
 using RandomChat.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,6 +27,7 @@ namespace RandomChat.Controllers
             }
             else
             {
+                ViewBag.city = HttpContext.Session.GetString("city");
                 return View();
             }
         }
@@ -77,7 +77,7 @@ namespace RandomChat.Controllers
                 _context.Topics.Add(topic);
                 _context.SaveChanges();
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 ModelState.AddModelError("Error", "Error when inserting your topic. Your topic name might be token.");
             }
