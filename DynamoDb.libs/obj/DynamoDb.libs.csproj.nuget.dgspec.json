@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {}
+    "C:\\Users\\PC-user\\source\\repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
+    "C:\\Users\\PC-user\\source\\repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj",
+        "projectUniqueName": "C:\\Users\\PC-user\\source\\repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj",
         "projectName": "DynamoDb.libs",
-        "projectPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj",
+        "projectPath": "C:\\Users\\PC-user\\source\\repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj",
         "packagesPath": "C:\\Users\\PC-user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\obj\\",
+        "outputPath": "C:\\Users\\PC-user\\source\\repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC-user\\AppData\\Roaming\\NuGet\\NuGet.Config",
