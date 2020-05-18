@@ -176,7 +176,7 @@ namespace RandomChat.Controllers
 
             return View();
         }
-        [Authorize]
+        [AuthorizeUser]
         [Route("LogoutNow")]
         public IActionResult Logout()
         {
