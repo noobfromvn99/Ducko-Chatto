@@ -65,13 +65,14 @@ namespace RandomChat.Controllers
         public IActionResult Create(string TopicName)
         {
             int UserId = Convert.ToInt32(HttpContext.Session.GetInt32(nameof(AppUser.UserID)));
+            string location = HttpContext.Session.GetString("city");
             if (UserId == 0 || TopicName == null)
             {
                 ModelState.AddModelError("Error", "Error when inserting your topic.");
                 return View();
             }
 
-            Topic topic = new Topic { TopicName = "#" + TopicName, UserId = UserId };
+            Topic topic = new Topic { TopicName = "#" + TopicName, UserId = UserId, Location = location };
             try
             {
                 _context.Topics.Add(topic);

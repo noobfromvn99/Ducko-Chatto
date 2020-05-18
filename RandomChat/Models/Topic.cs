@@ -10,6 +10,7 @@ namespace RandomChat.Models
 
         [Required]
         public string TopicName { get; set; }
+        public string Location { get; set; }
 
         [Required]
         [ForeignKey("AppUser")]

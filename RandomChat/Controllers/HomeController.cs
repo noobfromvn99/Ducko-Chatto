@@ -47,9 +47,9 @@ namespace RandomChat.Controllers
         public async Task<IActionResult> Index(string Email, string Password, string Gender, string AgeStage)
         {
             var login = await _context.Logins.FindAsync(Email);
-            var user = _context.Appusers.Where(e => e.Email == Email).Single();
+            
             //Validation
-            if (login == null || Gender == null || AgeStage == null || !PBKDF2.Verify(login.PasswordHash, Password))
+            if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
                 return View(new Login { Email = Email });
@@ -59,13 +59,20 @@ namespace RandomChat.Controllers
                 ModelState.AddModelError("LoginFailed", "Login failed, please activate your account and try again.");
                 return RedirectToAction("Verify", new { Email = Email });
             }
+            var user = _context.Appusers.Where(e => e.Email == Email).Single();
 
             var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            //            Location location = await LocationClient.GetLocation(remoteIpAddress);
+            Location location = await LocationClient.GetLocation(remoteIpAddress);
+
+            string city = "AU"; //City of deafult for test
+            if (location.city != null) 
+            {
+                city = location.city;
+            }
+
             // Login customer.
             HttpContext.Session.SetInt32(nameof(AppUser.UserID), Convert.ToInt32(user.UserID));
-            HttpContext.Session.SetString("Gender", Gender.ToString());
-            HttpContext.Session.SetString("city", remoteIpAddress);
+            HttpContext.Session.SetString("city", city);
             return RedirectToAction("Index", "Chat");
         }
 
