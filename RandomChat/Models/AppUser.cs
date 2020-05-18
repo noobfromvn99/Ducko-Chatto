@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RandomChat.Models
@@ -14,6 +15,8 @@ namespace RandomChat.Models
         [Required]
         [ForeignKey("Login")]
         public string Email { get; set; }
+
+        public virtual List<Topic> Topics { get; set; }
         public virtual Login Login { get; set; }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using DynamoDb.libs.DynamoDb;
-using DynamoDB.Models;
 using Newtonsoft.Json;
 using System;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 

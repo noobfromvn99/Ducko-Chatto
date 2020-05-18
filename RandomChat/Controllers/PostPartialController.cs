@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RandomChat.Data;
 using RandomChat.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RandomChat.Controllers
 {
@@ -20,18 +20,20 @@ namespace RandomChat.Controllers
         [HttpGet]
         public IActionResult ReList()
         {
+            string city = HttpContext.Session.GetString("city");
+
             int count = _context.Topics.Count();
 
-            List<Topic> topics = _context.Topics.OrderBy(r => Guid.NewGuid()).Take(PICKED).ToList();
-            
+            List<Topic> topics = _context.Topics.Where(e => e.Location == city).OrderBy(r => Guid.NewGuid()).Take(PICKED).ToList();
+
 
             return PartialView("_ReList", topics);
         }
 
         [HttpGet]
-        public IActionResult Search(string content) 
+        public IActionResult Search(string content)
         {
-            List<Topic> topics = _context.Topics.Where(e => e.TopicName.Contains(content)).ToList();
+            List<Topic> topics = _context.Topics.Where(e => e.TopicName.Contains(content) || e.Location.Contains(content)).ToList();
 
             return PartialView("_ReList", topics);
         }
