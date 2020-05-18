@@ -28,8 +28,7 @@ namespace RandomChat.Controllers
             }
             else
             {
-                List<Topic> topics = _context.Topics.ToList();
-                return View(topics);
+                return View();
             }
         }
 
@@ -68,13 +67,20 @@ namespace RandomChat.Controllers
             int UserId = Convert.ToInt32(HttpContext.Session.GetInt32(nameof(AppUser.UserID)));
             if (UserId == 0 || TopicName == null)
             {
-                ModelState.AddModelError("Error", "Error when insertting your topic.");
+                ModelState.AddModelError("Error", "Error when inserting your topic.");
                 return View();
             }
 
-            Topic topic = new Topic { TopicName = TopicName, UserId = UserId };
-            _context.Topics.Add(topic);
-            _context.SaveChanges();
+            Topic topic = new Topic { TopicName = "#" + TopicName, UserId = UserId };
+            try
+            {
+                _context.Topics.Add(topic);
+                _context.SaveChanges();
+            }
+            catch (Exception) 
+            {
+                ModelState.AddModelError("Error", "Error when inserting your topic. Your topic name might be token.");
+            }
             return RedirectToAction("List", new { id = topic.TopicId });
         }
 

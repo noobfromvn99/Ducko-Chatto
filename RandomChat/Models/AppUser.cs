@@ -7,9 +7,9 @@ namespace RandomChat.Models
     public class AppUser
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity), Key]
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
-        public string Gender { get; set; }
+        public string Location { get; set; }
 
         [Required]
         [ForeignKey("Login")]

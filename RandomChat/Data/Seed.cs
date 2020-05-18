@@ -17,13 +17,14 @@ namespace RandomChat.Data
                new Login
                {
                    Email = "test@test.com",
-                   PasswordHash = "YBNbEL4Lk8yMEWxiKkGBeoILHTU7WZ9n8jJSy8TNx0DAzNEFVsIVNRktiQV+I8d2"
+                   PasswordHash = "YBNbEL4Lk8yMEWxiKkGBeoILHTU7WZ9n8jJSy8TNx0DAzNEFVsIVNRktiQV+I8d2",
+                   Activate = true
                }
            );
             context.Appusers.AddRange(
                 new AppUser
                 {
-                    Gender = "Male",
+                    Location = "Melbourne",
                     Email = "test@test.com",
                 }
             );

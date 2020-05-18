@@ -1,23 +1,82 @@
 ﻿@model IEnumerable<Topic>
 
-@{
+    @{
     ViewData["Title"] = "Start Chatting";
-}
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-<div classs="row">
-    @foreach (Topic topic in Model)
-    {
-    <div class="card mb-3">
-        <div class="card-header">
-            @topic.TopicName
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">@topic.TopicName</h5>
-            <p class="card-text">Sample reply.</p>
-            <a asp-action="List" asp-route-id="@topic.TopicId" class="btn btn-primary">Learn more</a>
-        </div>
-    </div>
     }
-</div>
+    <ul class="nav">
+        <li class="nav-item">
+            <a asp-action="Create">Create New</a>
+        </li>
+
+        <li class="nav-item" style="float:right;">
+            <a id="btnRefresh">
+                <span class="glyphicon glyphicon-refresh"></span>
+            </a>
+        </li>
+    </ul>
+    <div class="form-group">
+        <form asp-action="Search" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" required>
+            <a class="btn btn-outline-success my-2 my-sm-0" id="btnSearch">Search</a>
+        </form>
+    </div>
+    <div class="form-group">
+        <form asp-controller="PostPartial">
+            <div id="loader" style="display:none;"></div>
+            <div id="posts">
+
+            </div>
+        </form>
+    </div>
+    <script>
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("posts").style.display = "block";
+        }
+
+        $.ajax({
+            url: "/PostPartial/ReList",
+            type: "GET",
+            cache: false,
+            async: true,
+            success: function (response) {
+                $("#posts").html(response)
+            }
+        });
+
+        $(document).ready(function () {
+            $("#btnRefresh").click(function () {
+                document.getElementById("loader").style.display = "block";
+                document.getElementById("posts").style.display = "none";
+                setTimeout(showPage, 1000);
+                $.ajax({
+                    url: "/PostPartial/ReList",
+                    type: "GET",
+                    cache: false,
+                    async: true,
+                    success: function (response) {
+                        $("#posts").html(response)
+                    }
+                });
+            })
+        });
+
+
+        $("#btnSearch").click(function () {
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("posts").style.display = "none";
+            setTimeout(showPage, 1000);
+            var content = document.getElementById('search').value;
+            $.ajax({
+                url: "/PostPartial/Search",
+                type: "GET",
+                data: {content : content},
+                cache: false,
+                async: true,
+                success: function (response) {
+                    $("#posts").html(response)
+                }
+            })
+        }
+       );
+    </script>

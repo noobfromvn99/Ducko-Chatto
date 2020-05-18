@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Topic>
+  
+
+
+<div classs="row">
+    @foreach (Topic topic in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                @topic.TopicName
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@topic.TopicName</h5>
+                <p class="card-text">@topic.FirstReplyAsync()</p>
+                <a asp-action="List" asp-controller="Chat" asp-route-id="@topic.TopicId" class="btn btn-primary">See more</a>
+            </div>
+        </div>
+    }
+</div>

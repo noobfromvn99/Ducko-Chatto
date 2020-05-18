@@ -21,7 +21,7 @@
         Password:
 
         <a>
-            <input type="text" class="form-control" name="password" data-val="true"
+            <input type="password" class="form-control" name="password" data-val="true"
                    data-val-required="The Email field is required.">
         </a>
 
@@ -29,7 +29,10 @@
 
     <div>
         <input type="submit" value="Register" class="btn btn-primary">
+        @Html.ValidationMessage("Insert", new { @class = "text-danger" })
     </div>
+    <a asp-area="default" asp-controller="Home" asp-action="Verify">Verify Your Account</a>
+
 
 </form>
 @if (ViewBag.Message != null)
@@ -41,4 +44,8 @@
             };
     </script>
 
+}
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

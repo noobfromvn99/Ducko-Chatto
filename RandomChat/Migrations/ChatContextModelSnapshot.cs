@@ -21,7 +21,7 @@ namespace RandomChat.Migrations
 
             modelBuilder.Entity("RandomChat.Models.AppUser", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int?>("UserID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -30,7 +30,7 @@ namespace RandomChat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Gender")
+                    b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserID");
@@ -68,24 +68,25 @@ namespace RandomChat.Migrations
 
             modelBuilder.Entity("RandomChat.Models.Topic", b =>
                 {
-                    b.Property<int>("TopicId")
+                    b.Property<int?>("TopicId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("TopicName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("creatorUserID")
+                    b.Property<int?>("UserId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("TopicId");
 
-                    b.HasIndex("creatorUserID");
+                    b.HasIndex("TopicName")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Topics");
                 });
@@ -101,9 +102,11 @@ namespace RandomChat.Migrations
 
             modelBuilder.Entity("RandomChat.Models.Topic", b =>
                 {
-                    b.HasOne("RandomChat.Models.AppUser", "creator")
+                    b.HasOne("RandomChat.Models.AppUser", "User")
                         .WithMany()
-                        .HasForeignKey("creatorUserID");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

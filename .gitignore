@@ -3,10 +3,14 @@
 ################################################################################
 
 *.lock
-/.vs/RandomChat/v16/Server/sqlite3/storage.ide-shm
-/.vs/RandomChat/v16/Server/sqlite3/storage.ide
-/.vs/RandomChat/v16/Server/sqlite3/storage.ide-wal
 .vs/slnx.sqlite
 RandomChat/bin/ 
 LambdaChatto.libs/obj/Debug
 LambdaChatto.libs/obj/Release
+.vs/StrangerChatApp/v16/.suo
+.vs/StrangerChatApp/v16/.suo
+RandomChat/obj/Release/netcoreapp3.1/RandomChat.csprojAssemblyReference.cache
+.vs/VSWorkspaceState.json
+.vs/VSWorkspaceState.json
+RandomChat/obj/
+.vs/

@@ -3,9 +3,8 @@
     "",
     "\\RandomChat",
     "\\RandomChat\\Controllers",
-    "\\RandomChat\\Models",
     "\\RandomChat\\Views",
-    "\\RandomChat\\Views\\Home"
+    "\\RandomChat\\Views\\Chat"
   ],
   "SelectedNode": "\\RandomChat.sln",
   "PreviewInSolutionExplorer": false
