@@ -12,7 +12,7 @@
             <div class="card-body">
                 <h5 class="card-title">@topic.TopicName</h5>
                 <p class="card-text">
-                 Anonymous: @ChatManger.getInstance().GetReply(topic.TopicId).Result.Items.FirstOrDefault().Reply
+                 Anonymous: @ChatManger.getInstance().GetReply(topic.TopicId).Result.Items.FirstOrDefault()?.Reply
                 </p>
 
                 <a asp-action="List" asp-controller="Chat" asp-route-id="@topic.TopicId" class="btn btn-primary">See more</a>
