@@ -2,7 +2,7 @@
 
 namespace RandomChat.Migrations
 {
-    public partial class updateusermodel : Migration
+    public partial class ReInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,6 +48,7 @@ namespace RandomChat.Migrations
                     TopicId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TopicName = table.Column<string>(nullable: false),
+                    Location = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -65,6 +66,12 @@ namespace RandomChat.Migrations
                 name: "IX_Appusers_Email",
                 table: "Appusers",
                 column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Topics_TopicName",
+                table: "Topics",
+                column: "TopicName",
                 unique: true);
 
             migrationBuilder.CreateIndex(

@@ -10,8 +10,8 @@ using RandomChat.Data;
 namespace RandomChat.Migrations
 {
     [DbContext(typeof(ChatContext))]
-    [Migration("20200516064241_update-user-model")]
-    partial class updateusermodel
+    [Migration("20200518140135_ReInit")]
+    partial class ReInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,15 +75,21 @@ namespace RandomChat.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TopicName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("UserId")
                         .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("TopicId");
+
+                    b.HasIndex("TopicName")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -102,7 +108,7 @@ namespace RandomChat.Migrations
             modelBuilder.Entity("RandomChat.Models.Topic", b =>
                 {
                     b.HasOne("RandomChat.Models.AppUser", "User")
-                        .WithMany()
+                        .WithMany("Topics")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
