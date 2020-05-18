@@ -1,9 +1,5 @@
-﻿using DynamoDb.libs.DynamoDb;
-using DynamoDB.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RandomChat.Models
 {
@@ -14,17 +10,18 @@ namespace RandomChat.Models
 
         [Required]
         public string TopicName { get; set; }
+        public string Location { get; set; }
 
         [Required]
         [ForeignKey("AppUser")]
         public int? UserId { get; set; }
         public virtual AppUser User { get; set; }
 
-        public string FirstReplyAsync() 
+        public string FirstReplyAsync()
         {
             return "Anonymous Replies";
         }
 
-     
+
     }
 }

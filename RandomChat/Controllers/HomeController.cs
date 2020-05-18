@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using RandomChat.Attributes;
 using RandomChat.Data;
 using RandomChat.Models;
+using SimpleHashing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SimpleHashing;
 
 namespace RandomChat.Controllers
 {
@@ -22,12 +22,12 @@ namespace RandomChat.Controllers
 
         static readonly string senderAddress = "bach.rmit.5499@gmail.com";
         static readonly string subject = "Ducko-Chatto verification";
+        private readonly LocationManger LocationClient;
         private readonly ChatContext _context;
-
 
         public HomeController(ChatContext context)
         {
-
+            LocationClient = LocationManger.GetInstance();
             _context = context;
         }
 
@@ -47,9 +47,9 @@ namespace RandomChat.Controllers
         public async Task<IActionResult> Index(string Email, string Password, string Gender, string AgeStage)
         {
             var login = await _context.Logins.FindAsync(Email);
-            var user = _context.Appusers.Where(e => e.Email == Email).Single();
+            
             //Validation
-            if (login == null || Gender == null || AgeStage == null  || !PBKDF2.Verify(login.PasswordHash, Password))
+            if (login == null || !PBKDF2.Verify(login.PasswordHash, Password))
             {
                 ModelState.AddModelError("LoginFailed", "Login failed, please try again.");
                 return View(new Login { Email = Email });
@@ -59,11 +59,20 @@ namespace RandomChat.Controllers
                 ModelState.AddModelError("LoginFailed", "Login failed, please activate your account and try again.");
                 return RedirectToAction("Verify", new { Email = Email });
             }
+            var user = _context.Appusers.Where(e => e.Email == Email).Single();
+
+            var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            Location location = await LocationClient.GetLocation(remoteIpAddress);
+
+            string city = "AU"; //City of deafult for test
+            if (location.city != null) 
+            {
+                city = location.city;
+            }
 
             // Login customer.
             HttpContext.Session.SetInt32(nameof(AppUser.UserID), Convert.ToInt32(user.UserID));
-            HttpContext.Session.SetString("Gender", Gender.ToString());
-            HttpContext.Session.SetString("ageStage", AgeStage.ToString());
+            HttpContext.Session.SetString("city", city);
             return RedirectToAction("Index", "Chat");
         }
 
@@ -158,13 +167,13 @@ namespace RandomChat.Controllers
                 }
 
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 ModelState.AddModelError("Insert", "Sign up failed, email has been token.");
             }
 
 
-           
+
             return View();
         }
         [Authorize]
