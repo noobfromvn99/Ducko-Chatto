@@ -15,41 +15,12 @@
                 <label for="Password" class="control-label">Password</label>
                 <input id="Password" name="Password" type="password" class="form-control" />
             </div>
-
-                <div class="form-group">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="GenderDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Your Gender
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onclick="changeGender('Male')">Male</a>
-                            <a class="dropdown-item" onclick="changeGender('FeMale')">Female</a>
-                            <a class="dropdown-item" onclick="changeGender('Blur')">Blur</a>
-                        </div>
-                        <input type="hidden" id="Gender" name="Gender" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="AgeDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Your Age
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onclick="changeAge('low')" value="low">Under 18</a>
-                            <a class="dropdown-item" onclick="changeAge('Mediumn')" value="Mediumn">18 - 23</a>
-                            <a class="dropdown-item" onclick="changeAge('High')" value="High">23 Above</a>
-                            <input type="hidden" id="AgeStage" name="AgeStage" />
-                        </div>
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <input type="submit" value="Login" class="btn btn-primary" />
                 </div>
                 @Html.ValidationMessage("LoginFailed", new { @class = "text-danger" })
                 <div class="form-group">
-                    <input type="button" value="Register" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("Create", "Home") + "'");" />
+                    <input type="button" value="Register" class="btn btn-link" onclick="@("window.location.href='" + @Url.Action("Create", "Home") + "'");" />
                 </div>
         </form>
     </div>

@@ -6,7 +6,7 @@ using System;
 
 namespace RandomChat.Attributes
 {
-    public class Authorize : Attribute, IAuthorizationFilter
+    public class AuthorizeUser : Attribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
