@@ -30,8 +30,8 @@ namespace ImageUploaderApi.Controllers
         }
 
         [HttpPost]
-        [Route("AddFile/{bucketName}")]
-        public async Task<IActionResult> AddFile([FromRoute] string bucketName, IFormFile file, string ImageKey){
+        [Route("AddFile/{bucketName}/{ImageKey}")]
+        public async Task<IActionResult> AddFile([FromRoute] string bucketName, IFormFile file, [FromRoute] string ImageKey){
             var response =  await _service.UploadFileAsync(bucketName, file, ImageKey);
 
             return Ok(response);

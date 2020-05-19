@@ -28,11 +28,6 @@ namespace RandomChat.Models
 
         public async Task<bool> Upload(IFormFile path, string imageKey) 
         {
-            var uploader = new Uploader
-            {
-                ImageKey = imageKey
-            };
-
             var fileName = ContentDispositionHeaderValue.Parse(path.ContentDisposition).FileName.Trim('"');
             using (var content = new MultipartFormDataContent()) 
             {
@@ -44,9 +39,8 @@ namespace RandomChat.Models
                             ContentType = new MediaTypeHeaderValue(path.ContentType)
                         }
                     }, "File", fileName);
-                content.Add(new StringContent(JsonConvert.SerializeObject(uploader),Encoding.UTF8, "application/json"));
 
-                var response = await client.PostAsync($"api/S3Bucket/AddFile/chatto-images", content);
+                var response = await client.PostAsync($"api/S3Bucket/AddFile/chatto-images/{imageKey}", content);
                 Console.WriteLine(content);
                 if (!response.IsSuccessStatusCode)
                     return false;

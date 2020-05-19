@@ -83,11 +83,12 @@ namespace ImageUploaderApi.Services
                 
 
                 var fileTransferUtilty = new TransferUtility(_client);
+
                 await fileTransferUtilty.UploadAsync(filePath, bucketName, ImageKey);
                 return new S3Response
                 {
                     Status = HttpStatusCode.OK,
-                    Message = "Pass"
+                    Message = ImageKey
                 };
             }
             catch (AmazonS3Exception s3e)
