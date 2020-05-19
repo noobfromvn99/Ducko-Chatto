@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rPt4m3hFWVWIbfKkXujzTO40iYTnxm2JLxWv7oyQkmY5bo1Ni9VMxP3FrtwiYAEBeKR8u3Q1L8Du5LqZT6MyRg==",
+  "dgSpecHash": "FaSxKCcg4c13KTj4SegFa/nJq5dKjAwUo7jreWVATEWNfNFkW2Pu5FbK6VzCxF+EgcTIARwOiArSOgZmrF7BMw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC-user\\source\\repos\\noobfromvn99\\StrangerChatApp\\LambdaChatto\\LambdaChatto.csproj",
+  "projectFilePath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\LambdaChatto\\LambdaChatto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC-user\\.nuget\\packages\\amazon.lambda.apigatewayevents\\2.0.0\\amazon.lambda.apigatewayevents.2.0.0.nupkg.sha512",
     "C:\\Users\\PC-user\\.nuget\\packages\\amazon.lambda.applicationloadbalancerevents\\2.0.0\\amazon.lambda.applicationloadbalancerevents.2.0.0.nupkg.sha512",

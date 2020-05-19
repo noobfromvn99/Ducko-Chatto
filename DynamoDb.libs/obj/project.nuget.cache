@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mAhWL+t/Gu4oafxDn/XCTSg8/Z6cTaClzKxEJSf1fishsAD/Tt2V/VYv0bAwLle4WgK5gq4fBl+22M8uASJiMg==",
+  "dgSpecHash": "7XYnXBHdJxGpe0fMt7ducoXbkkSFW1F6CNnO9CS3PN9JFPkSGWPl/vvvxVoVtKVZLarbgENqlMfq/z8kMF2ilA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC-user\\source\\repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj",
+  "projectFilePath": "C:\\Users\\PC-user\\Source\\Repos\\noobfromvn99\\StrangerChatApp\\DynamoDb.libs\\DynamoDb.libs.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC-user\\.nuget\\packages\\awssdk.core\\3.3.106.22\\awssdk.core.3.3.106.22.nupkg.sha512",
     "C:\\Users\\PC-user\\.nuget\\packages\\awssdk.dynamodbv2\\3.3.106.2\\awssdk.dynamodbv2.3.3.106.2.nupkg.sha512",
