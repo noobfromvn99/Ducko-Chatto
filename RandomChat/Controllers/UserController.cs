@@ -38,8 +38,8 @@ namespace RandomChat.Controllers
             Console.WriteLine("Delete");
             var id = HttpContext.Session.GetInt32(nameof(AppUser.UserID));
             AppUser user = _context.Appusers.Find(id);
-            _context.Logins.Remove(user.Login);
-            _context.Appusers.Remove(user);
+            Login login = _context.Logins.Find(user.Login);
+            login.Activate = false;
             _context.SaveChanges();
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");

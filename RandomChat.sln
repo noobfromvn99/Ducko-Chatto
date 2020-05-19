@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamoDb.libs", "DynamoDb.l
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaChatto", "LambdaChatto\LambdaChatto.csproj", "{199F62B4-071F-452A-9415-8F018657CB5C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageUploaderApi", "ImageUploaderApi\ImageUploaderApi.csproj", "{8A15AB00-B2CD-4AD6-869E-0CD219F9CA5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{199F62B4-071F-452A-9415-8F018657CB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{199F62B4-071F-452A-9415-8F018657CB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{199F62B4-071F-452A-9415-8F018657CB5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A15AB00-B2CD-4AD6-869E-0CD219F9CA5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A15AB00-B2CD-4AD6-869E-0CD219F9CA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A15AB00-B2CD-4AD6-869E-0CD219F9CA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A15AB00-B2CD-4AD6-869E-0CD219F9CA5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

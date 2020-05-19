@@ -106,7 +106,7 @@ namespace RandomChat.Migrations
             modelBuilder.Entity("RandomChat.Models.Topic", b =>
                 {
                     b.HasOne("RandomChat.Models.AppUser", "User")
-                        .WithMany()
+                        .WithMany("Topics")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
