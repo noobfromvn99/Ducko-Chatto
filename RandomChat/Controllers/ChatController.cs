@@ -53,8 +53,9 @@ namespace RandomChat.Controllers
         [HttpPost]
         public async Task<IActionResult> Reply(int? TopicId, string content)
         {
+            string imageKey = "test123";
             int? UserId = HttpContext.Session.GetInt32(nameof(AppUser.UserID));
-            if (await chatManger.Send(TopicId, content, UserId))
+            if (await chatManger.Send(TopicId, content, imageKey,UserId))
             {
                 return RedirectToAction("List", new { id = TopicId });
             }

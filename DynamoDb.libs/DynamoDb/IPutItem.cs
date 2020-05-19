@@ -7,6 +7,6 @@ namespace DynamoDb.libs.DynamoDb
 {
     public interface IPutItem
     {
-        Task AddNewEntry(string chatId, int TopicId, string reply, int UserId);
+        Task AddNewEntry(string chatId, int TopicId, string reply, string ImageKey, int UserId);
     }
 }
