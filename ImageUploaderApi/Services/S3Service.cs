@@ -3,6 +3,7 @@ using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using Amazon.S3.Util;
 using ImageUploaderApi.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -69,18 +70,43 @@ namespace ImageUploaderApi.Services
             };
             }
 
-        public async Task UploadFileAsync(string bucketName, string filePath, string ImageKey)
+        public async Task<S3Response> UploadFileAsync(string bucketName, IFormFile file, string ImageKey)
         {
             try
             {
+                var filePath = Path.Combine("/tmp/", file.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                
+
                 var fileTransferUtilty = new TransferUtility(_client);
                 await fileTransferUtilty.UploadAsync(filePath, bucketName, ImageKey);
+                return new S3Response
+                {
+                    Status = HttpStatusCode.OK,
+                    Message = "Pass"
+                };
+            }
+            catch (AmazonS3Exception s3e)
+            {
+                return new S3Response
+                {
+                    Status = s3e.StatusCode,
+                    Message = s3e.Message
+                };
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                return new S3Response
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = e.Message
+                };
             }
-        }
+    }
 
         public async Task GetObjectFromS3Async(string bucketName, string keyname)
         {

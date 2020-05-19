@@ -60,14 +60,11 @@ namespace RandomChat.Controllers
 
             if (uploadImage.Length > 0) 
             {
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), uploadImage.FileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create)) 
+                if (await imageManger.Upload(uploadImage, imageKey) == false)
                 {
-                    await uploadImage.CopyToAsync(stream);
+                    ModelState.AddModelError("Error", "Error when insertting your image.");
+                    return RedirectToAction("List", new { id = TopicId });
                 }
-
-                await imageManger.Upload(filePath, imageKey);
             }
             
                

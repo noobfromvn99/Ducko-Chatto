@@ -9,7 +9,7 @@ namespace RandomChat.Data
 {
     public class ImageApi
     {
-        private const string ApiBaseUri = "https://xc22vovqyi.execute-api.us-east-1.amazonaws.com/Prod";
+        private const string ApiBaseUri = "https://xc22vovqyi.execute-api.us-east-1.amazonaws.com/Prod/";
 
         public static HttpClient InitializeClient()
         {

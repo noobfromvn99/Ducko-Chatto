@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ImageUploaderApi.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImageUploaderApi.Controllers
@@ -30,15 +31,15 @@ namespace ImageUploaderApi.Controllers
 
         [HttpPost]
         [Route("AddFile/{bucketName}")]
-        public async Task<IActionResult> AddFile([FromRoute] string bucketName, string filepath, string ImageKey) {
-            await _service.UploadFileAsync(bucketName, filepath, ImageKey);
+        public async Task<IActionResult> AddFile([FromRoute] string bucketName, IFormFile file, string ImageKey){
+            var response =  await _service.UploadFileAsync(bucketName, file, ImageKey);
 
-            return Ok();
+            return Ok(response);
         }
 
         [HttpPost]
         [Route("GetFile/{bucketName}")]
-        public async Task<IActionResult> GetObjectFromS3Async([FromRoute] string bucketName, string keyname) 
+        public async Task<IActionResult> GetObjectFromS3Async([FromRoute] string bucketName, string keyname)
         {
             await _service.GetObjectFromS3Async(bucketName, keyname);
 

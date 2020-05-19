@@ -1,8 +1,12 @@
-﻿using RandomChat.Data;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using RandomChat.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace RandomChat.Models
@@ -22,23 +26,36 @@ namespace RandomChat.Models
             return _instane;
         }
 
-        public async Task<bool> Upload(string path, string imageKey) 
+        public async Task<bool> Upload(IFormFile path, string imageKey) 
         {
-            var response = await client.PostAsync($"api/S3Bucket/AddFile/chatto-images?",
-                new JsonContent(
-                     new 
-                     {
-                         filepath = path,
-                         ImageKey = imageKey
-                     }
-                    )
-            );
-            Console.WriteLine(response.Content) ;
-            Console.WriteLine(path);
-            if (!response.IsSuccessStatusCode)
-                return false;
+            var uploader = new Uploader
+            {
+                ImageKey = imageKey
+            };
 
-            return true;
+            var fileName = ContentDispositionHeaderValue.Parse(path.ContentDisposition).FileName.Trim('"');
+            using (var content = new MultipartFormDataContent()) 
+            {
+                content.Add(new StreamContent(path.OpenReadStream())
+                    {
+                        Headers =
+                        {
+                            ContentLength = path.Length,
+                            ContentType = new MediaTypeHeaderValue(path.ContentType)
+                        }
+                    }, "File", fileName);
+                content.Add(new StringContent(JsonConvert.SerializeObject(uploader),Encoding.UTF8, "application/json"));
+
+                var response = await client.PostAsync($"api/S3Bucket/AddFile/chatto-images", content);
+                Console.WriteLine(content);
+                if (!response.IsSuccessStatusCode)
+                    return false;
+
+                return true;
+            }
+         
+
+            
         }
     }
 }
