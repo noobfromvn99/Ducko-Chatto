@@ -41,9 +41,9 @@ namespace RandomChat.Models
             return DynamoTableItem;
         }
 
-        public async Task<bool> Send(int? TopicId, string content, int? UserId)
+        public async Task<bool> Send(int? TopicId, string content, string imageKey, int? UserId)
         {
-            var response = await client.GetAsync($"api/DynamoDB/send?TopicId={TopicId}&reply={content}&UserId={UserId}");
+            var response = await client.GetAsync($"api/DynamoDB/send?TopicId={TopicId}&reply={content}&imageKey={imageKey}&UserId={UserId}");
 
             if (!response.IsSuccessStatusCode)
                 return false;

@@ -37,6 +37,7 @@ namespace DynamoDb.libs.DynamoDb
                 ChatId = result["ChatId"].S,
                 TopicId = Convert.ToInt32(result["TopicId"].N),
                 Reply = result["Reply"].S,
+                ImageKey = result["ImageKey"].S,
                 ReplyOn = result["ReplyOn"].S,
                 UserId = Convert.ToInt32(result["UserId"].N)
             };
@@ -71,7 +72,7 @@ namespace DynamoDb.libs.DynamoDb
                     }
                 },
                 FilterExpression = "TopicId = :v_TopicId",
-                ProjectionExpression = "ChatId, TopicId , Reply, ReplyOn, UserId"
+                ProjectionExpression = "ChatId, TopicId , Reply,ImageKey, ReplyOn, UserId"
             };
         }
     }
