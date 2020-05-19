@@ -11,8 +11,11 @@ namespace DynamoDB.Models
         public string ChatId { get; set; }
         public int TopicId { get; set; }
         public string Reply { get; set; }
+        public string ImageKey { get; set; }
         public string ReplyOn { get; set; }
         public int UserId { get; set; }
+
+       
     }
 
 }

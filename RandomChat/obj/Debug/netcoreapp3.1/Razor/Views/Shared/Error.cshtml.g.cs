@@ -57,7 +57,7 @@ using RandomChat.Models;
         {
 #nullable restore
 #line 2 "C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\Views\Shared\Error.cshtml"
-  
+
     ViewData["Title"] = "Error";
 
 #line default
