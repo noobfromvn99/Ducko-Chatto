@@ -53,13 +53,12 @@ namespace RandomChat.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Reply(int? TopicId, string content, IFormFile uploadImage)
-        {
-    
-            Console.WriteLine(uploadImage.Length);
-            string imageKey = Convert.ToString(Guid.NewGuid());
+        {  
+            string imageKey = "empty";
 
-            if (uploadImage.Length > 0) 
+            if (uploadImage != null) 
             {
+                imageKey = Convert.ToString(Guid.NewGuid());
                 if (await imageManger.Upload(uploadImage, imageKey) == false)
                 {
                     ModelState.AddModelError("Error", "Error when insertting your image.");
