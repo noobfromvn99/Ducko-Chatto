@@ -15,10 +15,7 @@
             <div class="form-group">
 
                 <label asp-for="TopicName" class="control-label">Add a new topic</label>
-                <input type="file" name="image" id="uploadImage" class="form-control-file" onchange="PreviewImage();" />
-                <img id="uploadPreview" style="width: 100px; height: 100px;" />
-
-                <textarea asp-for="TopicName"></textarea>
+                <input type="text" asp-for="TopicName" class="control-label" />
                 <span asp-validation-for="TopicName" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,31 +32,6 @@
 
 
 @section Scripts {
-    <script>
-
-    "use strict";
-
-  function AJAXSubmit (oFormElement) {
-    var oReq = new XMLHttpRequest();
-    oReq.onload = function(e) { 
-    oFormElement.elements.namedItem("result").value = 
-      'Result: ' + this.status + ' ' + this.statusText;
-    };
-    oReq.open("post", oFormElement.action);
-    oReq.send(new FormData(oFormElement));
-  }
-        tinymce.init({
-    selector: 'textarea',
-    width : '1110'
-});
-    function PreviewImage() {
-        var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
-
-        oFReader.onload = function (oFREvent) {
-            document.getElementById("uploadPreview").src = oFREvent.target.result;
-        };
-    };
-    </script>
+  
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

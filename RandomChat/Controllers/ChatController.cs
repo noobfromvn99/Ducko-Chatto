@@ -1,13 +1,17 @@
 ﻿using Amazon;
 using Amazon.S3;
 using Amazon.S3.Transfer;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using RandomChat.Data;
 using RandomChat.Models;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 
@@ -17,16 +21,13 @@ namespace RandomChat.Controllers
     {
         private readonly ChatContext _context;
         private ChatManger chatManger;
-        private const string bucketName = "ducko-chatto-image-store";
-        private const string keyName = "image";
-        private const string filePath = "C:\\Users\\Bach Rach\\Desktop\\79934978_2536034256721619_1821982627985358848_o.jpg";
-        private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USEast1;
-        private static IAmazonS3 s3Client;
+        private ImageManger imageManger;
+
         public ChatController(ChatContext context)
         {
             _context = context;
             chatManger = ChatManger.getInstance();
-            s3Client = new AmazonS3Client(bucketRegion);
+            imageManger = ImageManger.GetInstance();
         }
 
         public IActionResult Index()
@@ -51,9 +52,25 @@ namespace RandomChat.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Reply(int? TopicId, string content)
+        public async Task<IActionResult> Reply(int? TopicId, string content, IFormFile uploadImage)
         {
-            string imageKey = "test123";
+    
+            Console.WriteLine(uploadImage.Length);
+            string imageKey = Convert.ToString(Guid.NewGuid());
+
+            if (uploadImage.Length > 0) 
+            {
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), uploadImage.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create)) 
+                {
+                    await uploadImage.CopyToAsync(stream);
+                }
+
+                await imageManger.Upload(filePath, imageKey);
+            }
+            
+               
             int? UserId = HttpContext.Session.GetInt32(nameof(AppUser.UserID));
             if (await chatManger.Send(TopicId, content, imageKey,UserId))
             {
@@ -73,22 +90,8 @@ namespace RandomChat.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(string TopicName)
+        public IActionResult Create(string TopicName)
         {
-            try
-            {
-                var fileTransferUtility = new TransferUtility(s3Client);
-                await fileTransferUtility.UploadAsync(filePath, bucketName);
-            }
-            catch (AmazonS3Exception e)
-            {
-                ModelState.AddModelError("Error", "Error encountered on server. Message: " + e.Message + " when writing an object");
-            }
-            catch (Exception e)
-            {
-                ModelState.AddModelError("Error", "Unknown encountered on server. Message: "+ e.Message + " when writing an object" );
-            
-            }
 
             int UserId = Convert.ToInt32(HttpContext.Session.GetInt32(nameof(AppUser.UserID)));
             string location = HttpContext.Session.GetString("city");

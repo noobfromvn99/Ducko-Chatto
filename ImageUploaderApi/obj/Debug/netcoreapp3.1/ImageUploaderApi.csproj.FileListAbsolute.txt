@@ -12,7 +12,6 @@ C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\bin\
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\bin\Debug\netcoreapp3.1\AWSSDK.Extensions.NETCore.Setup.dll
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\bin\Debug\netcoreapp3.1\AWSSDK.S3.dll
-C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\Debug\netcoreapp3.1\ImageUploaderApi.csprojAssemblyReference.cache
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\Debug\netcoreapp3.1\ImageUploaderApi.AssemblyInfoInputs.cache
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\Debug\netcoreapp3.1\ImageUploaderApi.AssemblyInfo.cs
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\Debug\netcoreapp3.1\ImageUploaderApi.RazorTargetAssemblyInfo.cache
@@ -102,3 +101,4 @@ C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\Debug\netcoreapp3.1\ImageUploaderApi.dll
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\Debug\netcoreapp3.1\ImageUploaderApi.pdb
 C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\Debug\netcoreapp3.1\ImageUploaderApi.genruntimeconfig.cache
+C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\ImageUploaderApi\obj\Debug\netcoreapp3.1\ImageUploaderApi.csprojAssemblyReference.cache

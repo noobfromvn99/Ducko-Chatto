@@ -6,6 +6,6 @@
     "\\RandomChat\\Views",
     "\\RandomChat\\Views\\Chat"
   ],
-  "SelectedNode": "\\RandomChat.sln",
+  "SelectedNode": "\\RandomChat\\Controllers\\ChatController.cs",
   "PreviewInSolutionExplorer": false
 }

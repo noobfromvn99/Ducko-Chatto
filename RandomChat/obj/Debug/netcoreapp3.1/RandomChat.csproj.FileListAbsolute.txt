@@ -309,3 +309,4 @@ C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debu
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\AWSSDK.S3.dll
 C:\Users\Bach Rach\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\obj\Debug\netcoreapp3.1\RandomChat.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PC-user\Source\Repos\noobfromvn99\StrangerChatApp\RandomChat\bin\Debug\netcoreapp3.1\AWSSDK.S3.dll

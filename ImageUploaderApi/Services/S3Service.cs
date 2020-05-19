@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace ImageUploaderApi.Services
@@ -68,14 +69,12 @@ namespace ImageUploaderApi.Services
             };
             }
 
-        private const string UploadWithKeyName = "UploadWithKeyName";
-        public async Task UploadFileAsync(string bucketName, string filePath)
+        public async Task UploadFileAsync(string bucketName, string filePath, string ImageKey)
         {
             try
             {
                 var fileTransferUtilty = new TransferUtility(_client);
-                //option 2
-                await fileTransferUtilty.UploadAsync(filePath, bucketName, UploadWithKeyName);
+                await fileTransferUtilty.UploadAsync(filePath, bucketName, ImageKey);
             }
             catch (Exception e)
             {
