@@ -6,7 +6,7 @@ namespace RandomChat.Data
 {
     public class LocationApi
     {
-        private const string ApiBaseUri = "http://api.ipstack.com/";
+        private const string ApiBaseUri = APIStrings.IPSTACKURI;
 
         public static HttpClient InitializeClient()
         {

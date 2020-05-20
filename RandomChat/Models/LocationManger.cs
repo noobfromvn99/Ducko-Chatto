@@ -11,7 +11,7 @@ namespace RandomChat.Models
     {
         private HttpClient client;
         private readonly static LocationManger _instance = new LocationManger();
-        private const string ACCESSKEY = "5276fdf6b94194c172f49d5ca80597a4";
+        private const string ACCESSKEY = APIStrings.IPSTACK_ACESSKEY;
 
         private LocationManger()
         {
