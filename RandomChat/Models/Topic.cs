@@ -17,11 +17,5 @@ namespace RandomChat.Models
         public int? UserId { get; set; }
         public virtual AppUser User { get; set; }
 
-        public string FirstReplyAsync()
-        {
-            return "Anonymous Replies";
-        }
-
-
     }
 }
