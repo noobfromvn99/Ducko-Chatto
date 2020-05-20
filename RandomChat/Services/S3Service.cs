@@ -2,7 +2,7 @@
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using Amazon.S3.Util;
-using ImageUploaderApi.Models;
+using RandomChat.Models;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Net;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
-namespace ImageUploaderApi.Services
+namespace RandomChat.Services
 {
     public class S3Service : IS3Service
     {
@@ -75,7 +75,7 @@ namespace ImageUploaderApi.Services
             try
             {
                
-                    
+
                     var fileTransferUtilty = new TransferUtility(_client);
 
                     await fileTransferUtilty.UploadAsync(stream, bucketName, ImageKey);

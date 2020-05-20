@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using RandomChat.Data;
 using RandomChat.Models;
+using RandomChat.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,13 +22,13 @@ namespace RandomChat.Controllers
     {
         private readonly ChatContext _context;
         private ChatManger chatManger;
-        private ImageManger imageManger;
+        private readonly IS3Service _service;
 
-        public ChatController(ChatContext context)
+        public ChatController(ChatContext context, IS3Service service)
         {
             _context = context;
             chatManger = ChatManger.getInstance();
-            imageManger = ImageManger.GetInstance();
+            _service = service;
         }
 
         public IActionResult Index()
@@ -58,11 +59,13 @@ namespace RandomChat.Controllers
 
             if (uploadImage != null) 
             {
-                imageKey = Convert.ToString(Guid.NewGuid());
-                if (await imageManger.Upload(uploadImage, imageKey) == false)
+                
+                imageKey = Convert.ToString(Guid.NewGuid()) + "|"  + uploadImage.FileName;
+
+                using (var stream = new MemoryStream())
                 {
-                    ModelState.AddModelError("Error", "Error when insertting your image.");
-                    return RedirectToAction("List", new { id = TopicId });
+                    await uploadImage.CopyToAsync(stream);
+                    var response = await _service.UploadFileAsync("chatto-images", stream, imageKey);
                 }
             }
             

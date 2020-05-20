@@ -13,43 +13,19 @@ namespace RandomChat.Models
 {
     public class ImageManger
     {
-        private HttpClient client;
+        private const string S3URL = "https://chatto-images.s3.amazonaws.com/";
         private readonly static ImageManger _instane = new ImageManger();
-
-        private ImageManger() 
-        {
-            client = ImageApi.InitializeClient();
-        }
+        private ImageManger Client;
 
         public static ImageManger GetInstance() 
         {
             return _instane;
         }
 
-        public async Task<bool> Upload(IFormFile path, string imageKey) 
+        public string GetReplyImageUrl(string imageKey)
         {
-            var fileName = ContentDispositionHeaderValue.Parse(path.ContentDisposition).FileName.Trim('"');
-            using (var content = new MultipartFormDataContent()) 
-            {
-                content.Add(new StreamContent(path.OpenReadStream())
-                    {
-                        Headers =
-                        {
-                            ContentLength = path.Length,
-                            ContentType = new MediaTypeHeaderValue(path.ContentType)
-                        }
-                    }, "File", fileName);
-
-                var response = await client.PostAsync($"api/S3Bucket/AddFile/chatto-images/{imageKey}", content);
-                Console.WriteLine(content);
-                if (!response.IsSuccessStatusCode)
-                    return false;
-
-                return true;
-            }
-         
-
-            
+            return S3URL + imageKey;
         }
+
     }
 }

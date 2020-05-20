@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ImageUploaderApi.Services;
@@ -32,9 +33,18 @@ namespace ImageUploaderApi.Controllers
         [HttpPost]
         [Route("AddFile/{bucketName}/{ImageKey}")]
         public async Task<IActionResult> AddFile([FromRoute] string bucketName, IFormFile file, [FromRoute] string ImageKey){
-            var response =  await _service.UploadFileAsync(bucketName, file, ImageKey);
 
-            return Ok(response);
+            using (var stream = new MemoryStream())
+            {
+                await file.CopyToAsync(stream);
+                var response = await _service.UploadFileAsync(bucketName, stream, ImageKey);
+                return Ok(response);
+            }
+
+
+          //  var response =  await _service.UploadFileAsync(bucketName, file, ImageKey);
+                
+            
         }
 
         [HttpPost]

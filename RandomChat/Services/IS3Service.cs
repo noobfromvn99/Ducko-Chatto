@@ -1,9 +1,9 @@
-﻿using ImageUploaderApi.Models;
+﻿using RandomChat.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace ImageUploaderApi.Services
+namespace RandomChat.Services
 {
     public interface IS3Service
     {
