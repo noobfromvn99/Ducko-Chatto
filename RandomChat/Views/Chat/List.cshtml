@@ -1,25 +1,102 @@
 ﻿@model RandomChat.Models.Topic
+@using RandomChat.Models
 
 @{
     ViewData["Title"] = "Topic replies";
 }
+    <div class="container">
+        <div class="row">
 
-<h1>@Html.DisplayFor(Model => Model.TopicName)</h1>
+            <div class="col-sm">
+                
+            </div>
+            <div class="col-sm">
+                <h1>@Html.DisplayFor(Model => Model.TopicName)</h1>
+                <ul class="list-group list-group-flush">
+                    @foreach (var reply in ViewBag.replies)
+                    {
+                        <li class="list-group-item">
+                            <p> <h3>Anonymous:</h3> @Html.Raw(reply.Reply) on @reply.ReplyOn</p>
 
-@foreach (var reply in ViewBag.replies)
-{
-    <p>Anonymous: @reply.Reply on @reply.ReplyOn</p>
-}
+                            @if (reply.ImageKey != "empty")
+                            {
+                                <img src=@ImageManger.GetInstance().GetReplyImageUrl(reply.ImageKey) />
+                            }
+                        </li>
+                    }
+                </ul>
+                <div class="topics-container">
+                    <form asp-action="Reply" enctype="multipart/form-data">
+                        <input type="file" name="uploadImage" id="uploadImage" class="form-control-file" onchange="PreviewImage();" />
+                        <img id="uploadPreview" style="width: 100px; height: 100px;" />
 
-<div class="topics-container">
-    <form asp-action="Reply">
-        <input name="content" id="content" class="form-control" placeholder="Leave some short and nice comment :)" />
-        <input type="hidden" name="TopicId" id="TopicId" value="@Html.DisplayFor(Model => Model.TopicId)" />
-        <button type="submit" value="submit" class="btn btn-primary">Submit</button>
-        @Html.ValidationMessage("Error", new { @class = "text-danger" })
-    </form>
-</div>
-@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}
+                        <textarea name="content" placeholder="Leave some short and nice comment :)"></textarea>
+                        <input type="hidden" name="TopicId" id="TopicId" value="@Html.DisplayFor(Model => Model.TopicId)" />
+                        <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+                        @Html.ValidationMessage("Error", new { @class = "text-danger" })
+                    </form>
+                </div>
+                </div>
+                <div class="col-sm">
+                    
+                </div>
+            </div>
+        </div>
+        @section Scripts {
+            <script>
+
+                "use strict";
+
+                function AJAXSubmit(oFormElement) {
+                    var oReq = new XMLHttpRequest();
+                    oReq.onload = function (e) {
+                        oFormElement.elements.namedItem("result").value =
+                            'Result: ' + this.status + ' ' + this.statusText;
+                    };
+                    oReq.open("post", oFormElement.action);
+                    oReq.send(new FormData(oFormElement));
+                }
+
+                function PreviewImage() {
+                    var oFReader = new FileReader();
+                    oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+                    oFReader.onload = function (oFREvent) {
+                        document.getElementById("uploadPreview").src = oFREvent.target.result;
+                    };
+                };
+            </script>
+            <script>
+                tinymce.init({
+                    selector: 'textarea',
+                    width: '1110',
+                    plugins: ["placeholder"]
+                });
+                tinymce.PluginManager.add('placeholder', function (editor) {
+                    editor.on('init', function () {
+                        var label = new Label;
+                        onBlur();
+                        tinymce.DOM.bind(label.el, 'click', onFocus);
+                        editor.on('focus', onFocus);
+                        editor.on('blur', onBlur);
+                        editor.on('change', onBlur);
+                        editor.on('setContent', onBlur);
+                        function onFocus() { if (!editor.settings.readonly === true) { label.hide(); } editor.execCommand('mceFocus', false); }
+                        function onBlur() { if (editor.getContent() == '') { label.show(); } else { label.hide(); } }
+                    });
+                    var Label = function () {
+                        var placeholder_text = editor.getElement().getAttribute("placeholder") || editor.settings.placeholder;
+                        var placeholder_attrs = editor.settings.placeholder_attrs || { style: { position: 'absolute', top: '2px', left: 0, color: '#aaaaaa', padding: '.25%', margin: '5px', width: '80%', 'font-size': '17px !important;', overflow: 'hidden', 'white-space': 'pre-wrap' } };
+                        var contentAreaContainer = editor.getContentAreaContainer();
+                        tinymce.DOM.setStyle(contentAreaContainer, 'position', 'relative');
+                        this.el = tinymce.DOM.add(contentAreaContainer, "label", placeholder_attrs, placeholder_text);
+                    }
+                    Label.prototype.hide = function () { tinymce.DOM.setStyle(this.el, 'display', 'none'); }
+                    Label.prototype.show = function () { tinymce.DOM.setStyle(this.el, 'display', ''); }
+                });
+
+
+            </script>
+            @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+        }
 

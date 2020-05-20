@@ -30,10 +30,10 @@ namespace DynamoDB.Controllers
         }
 
         [Route("send")]
-        public IActionResult Send([FromQuery]int topicId, string reply, int UserId)
+        public IActionResult Send([FromQuery]int topicId, string reply,string ImageKey, int UserId)
         {
             Guid uuid = Guid.NewGuid();
-            _putItem.AddNewEntry(uuid.ToString(), topicId, reply, UserId);
+            _putItem.AddNewEntry(uuid.ToString(), topicId, reply,ImageKey, UserId);
             return Ok();
         }
 

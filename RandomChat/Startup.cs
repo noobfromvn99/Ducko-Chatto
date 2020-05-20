@@ -1,3 +1,4 @@
+using Amazon.S3;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RandomChat.Data;
+using RandomChat.Services;
 
 namespace RandomChat
 {
@@ -29,7 +31,12 @@ namespace RandomChat
                 options.UseLazyLoadingProxies();
             });
 
+            services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
 
+            // Add S3 to the ASP.NET Core dependency injection framework.
+            services.AddAWSService<IAmazonS3>();
+
+            services.AddSingleton<IS3Service, S3Service>();
 
             services.AddDistributedMemoryCache();
             services.AddSession(options => //enable session

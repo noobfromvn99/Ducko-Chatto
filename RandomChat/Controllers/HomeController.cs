@@ -44,7 +44,7 @@ namespace RandomChat.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string Email, string Password, string Gender, string AgeStage)
+        public async Task<IActionResult> Index(string Email, string Password)
         {
             var login = await _context.Logins.FindAsync(Email);
             

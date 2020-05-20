@@ -1,10 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Amazon;
+using Amazon.S3;
+using Amazon.S3.Transfer;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using RandomChat.Data;
 using RandomChat.Models;
+using RandomChat.Services;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+
 
 namespace RandomChat.Controllers
 {
@@ -12,11 +22,13 @@ namespace RandomChat.Controllers
     {
         private readonly ChatContext _context;
         private ChatManger chatManger;
+        private readonly IS3Service _service;
 
-        public ChatController(ChatContext context)
+        public ChatController(ChatContext context, IS3Service service)
         {
             _context = context;
             chatManger = ChatManger.getInstance();
+            _service = service;
         }
 
         public IActionResult Index()
@@ -41,10 +53,25 @@ namespace RandomChat.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Reply(int? TopicId, string content)
-        {
+        public async Task<IActionResult> Reply(int? TopicId, string content, IFormFile uploadImage)
+        {  
+            string imageKey = "empty";
+
+            if (uploadImage != null) 
+            {
+                
+                imageKey = Convert.ToString(Guid.NewGuid()) + "|"  + uploadImage.FileName;
+
+                using (var stream = new MemoryStream())
+                {
+                    await uploadImage.CopyToAsync(stream);
+                    var response = await _service.UploadFileAsync("chatto-images", stream, imageKey);
+                }
+            }
+            
+               
             int? UserId = HttpContext.Session.GetInt32(nameof(AppUser.UserID));
-            if (await chatManger.Send(TopicId, content, UserId))
+            if (await chatManger.Send(TopicId, content, imageKey,UserId))
             {
                 return RedirectToAction("List", new { id = TopicId });
             }
@@ -64,6 +91,7 @@ namespace RandomChat.Controllers
         [HttpPost]
         public IActionResult Create(string TopicName)
         {
+
             int UserId = Convert.ToInt32(HttpContext.Session.GetInt32(nameof(AppUser.UserID)));
             string location = HttpContext.Session.GetString("city");
             if (UserId == 0 || TopicName == null)

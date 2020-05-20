@@ -16,9 +16,9 @@ namespace DynamoDb.libs.DynamoDb
         {
             _dynamoClient = client;
         }
-        public async Task AddNewEntry(string ChatId, int TopicId,string reply, int UserId) 
+        public async Task AddNewEntry(string ChatId, int TopicId,string reply,string ImageKey, int UserId) 
         {
-            var queryRequest = RequestBuilder(ChatId, TopicId, reply, UserId);
+            var queryRequest = RequestBuilder(ChatId, TopicId, reply, ImageKey, UserId);
 
             await PutItemAsync(queryRequest);
         }
@@ -28,13 +28,14 @@ namespace DynamoDb.libs.DynamoDb
             await _dynamoClient.PutItemAsync(queryRequest);
         }
 
-        private PutItemRequest RequestBuilder(string chatId, int TopicId, string reply, int UserId)
+        private PutItemRequest RequestBuilder(string chatId, int TopicId, string reply, string ImageKey, int UserId)
         {
             var item = new Dictionary<string, AttributeValue>
             {
                 {"ChatId", new AttributeValue{S = chatId.ToString()} },
                 {"TopicId", new AttributeValue { N = TopicId.ToString()} },
                 {"Reply", new AttributeValue{S = reply} },
+                {"ImageKey", new AttributeValue{ S = ImageKey} },
                 {"ReplyOn", new AttributeValue{ S = DateTime.Now.ToString()} },
                 {"UserId", new AttributeValue{N = UserId.ToString()} }
             };

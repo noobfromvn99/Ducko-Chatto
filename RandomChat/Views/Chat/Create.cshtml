@@ -13,8 +13,9 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="TopicName" class="control-label"></label>
-                <input asp-for="TopicName" class="form-control" />
+
+                <label asp-for="TopicName" class="control-label">Add a new topic</label>
+                <input type="text" asp-for="TopicName" class="control-label" />
                 <span asp-validation-for="TopicName" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -31,5 +32,6 @@
 
 
 @section Scripts {
+  
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
