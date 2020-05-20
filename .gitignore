@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -17,3 +17,4 @@ RandomChat/obj/*
 ImageUploaderApi/obj/*
 .vs/RandomChat/DesignTimeBuild/.dtbcache.v2
 .vs/RandomChat/DesignTimeBuild/.dtbcache.v2
+obj/
