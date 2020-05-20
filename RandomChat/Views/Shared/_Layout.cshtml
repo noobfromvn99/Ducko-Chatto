@@ -33,7 +33,7 @@
                         else
                         {
                             <li class="nav nav-item">
-                                <a>Welcome our friend form: @ViewBag.city | </a>
+                                <a>Welcome our friend form: @Context.Session.GetString("city") | </a>
                             </li>
                             <li class="nav nav-item" style="float:right;">
                                 <a class="nav-link text-dark" asp-area="default" asp-controller="Home" asp-action="Logout">Logout</a>
