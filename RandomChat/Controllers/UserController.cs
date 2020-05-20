@@ -24,10 +24,12 @@ namespace RandomChat.Controllers
         }
 
         [Route("/profile")]
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
             var id = HttpContext.Session.GetInt32(nameof(AppUser.UserID));
             AppUser user = _context.Appusers.Find(id);
+            var TopicItem = await chatManger.GetReply(id);
+            ViewBag.replies = TopicItem.Items.OrderByDescending(e => e.ReplyOn);
             return View(user);
         }
 

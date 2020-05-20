@@ -20,7 +20,9 @@
 
                             @if (reply.ImageKey != "empty")
                             {
-                                <img src=@ImageManger.GetInstance().GetReplyImageUrl(reply.ImageKey) />
+                       
+                            <img src=@ImageManger.GetInstance().GetReplyImageUrl(reply.ImageKey) style="max-height:600px;max-width:1110px;"/>
+                      
                             }
                         </li>
                     }

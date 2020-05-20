@@ -10,8 +10,8 @@
                 <h4 style="text-align:center; font-weight:bold">@topic.TopicName</h4>
             </div>
             <div class="card-body">
-                <h5 class="card-title">@topic.TopicName</h5>
-                <p class="card-text" style="border-top: 1px solid gray  ">
+                
+                <p class="card-text" style="border-bottom: 1px solid gray  ">
                  Anonymous: @Html.Raw(ChatManger.getInstance().GetReply(topic.TopicId).Result.Items.FirstOrDefault()?.Reply)
                 </p>
 
