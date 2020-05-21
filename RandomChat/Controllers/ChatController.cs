@@ -65,7 +65,7 @@ namespace RandomChat.Controllers
                 using (var stream = new MemoryStream())
                 {
                     await uploadImage.CopyToAsync(stream);
-                    var response = await _service.UploadFileAsync("chatto-images", stream, imageKey);
+                    var response = await _service.UploadFileAsync(APIStrings.S3BUCKETNAME, stream, imageKey);
                 }
             }
             

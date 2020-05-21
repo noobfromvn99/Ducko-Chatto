@@ -15,7 +15,6 @@ namespace RandomChat.Models
     {
         private const string S3URL = "https://chatto-images.s3.amazonaws.com/";
         private readonly static ImageManger _instane = new ImageManger();
-        private ImageManger Client;
 
         public static ImageManger GetInstance() 
         {

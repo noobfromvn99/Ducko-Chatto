@@ -12,5 +12,7 @@ namespace RandomChat.Data
         public const string IPSTACKURI = "http://api.ipstack.com/";
 
         public const string IPSTACK_ACESSKEY = "5276fdf6b94194c172f49d5ca80597a4";
+
+        public const string S3BUCKETNAME = "chatto-images";
     }
 }

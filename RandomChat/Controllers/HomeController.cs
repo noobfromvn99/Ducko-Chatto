@@ -229,7 +229,7 @@ namespace RandomChat.Controllers
       AWS SDK for .NET</a>.</p>
   <p>Please verify with this code:</p>
   <h3>" + code + @"</h3>
-  <p><a href='https://aws.amazon.com/ses/'>verify here</a></p>
+  <p><a href='http://ducko-chatto-app.us-east-1.elasticbeanstalk.com/Home/Verify'>verify here</a></p>
 </body>
 </html>";
             return message;
