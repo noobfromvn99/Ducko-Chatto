@@ -22,6 +22,9 @@ namespace RandomChat.Controllers
 
         static readonly string senderAddress = "bach.rmit.5499@gmail.com";
         static readonly string subject = "Ducko-Chatto verification";
+        private String awsAccessKey = "AKIAJ73G5GWIQ443FVKA";
+        private String awsSecretKey = "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";
+
         private readonly LocationManger LocationClient;
         private readonly ChatContext _context;
 
@@ -124,7 +127,7 @@ namespace RandomChat.Controllers
             try
             {
                 await _context.SaveChangesAsync();
-                using (var client = new AmazonSimpleEmailServiceClient(RegionEndpoint.USEast1))
+                using (var client = new AmazonSimpleEmailServiceClient(awsAccessKey, awsSecretKey,RegionEndpoint.USEast1))
                 {
                     var sendRequest = new SendEmailRequest
                     {
